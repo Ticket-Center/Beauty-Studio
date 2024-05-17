@@ -64,7 +64,7 @@
             lbPassword.AutoSize = true;
             lbPassword.Font = new Font("Impact", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             lbPassword.ForeColor = SystemColors.ControlLightLight;
-            lbPassword.Location = new Point(208, 381);
+            lbPassword.Location = new Point(203, 381);
             lbPassword.Name = "lbPassword";
             lbPassword.Size = new Size(198, 35);
             lbPassword.TabIndex = 3;
@@ -113,6 +113,7 @@
             btnRegister.TabIndex = 7;
             btnRegister.Text = "New User?";
             btnRegister.UseVisualStyleBackColor = false;
+            btnRegister.Click += btnRegister_Click;
             // 
             // LogIn
             // 
@@ -128,7 +129,7 @@
             Controls.Add(txtUsername);
             Controls.Add(pBLogo);
             Name = "LogIn";
-            Text = "Form1";
+            Text = "Beauty Studio";
             ((System.ComponentModel.ISupportInitialize)pBLogo).EndInit();
             ResumeLayout(false);
             PerformLayout();

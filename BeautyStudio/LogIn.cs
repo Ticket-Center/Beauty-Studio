@@ -6,5 +6,12 @@ namespace BeautyStudio
         {
             InitializeComponent();
         }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            Register registerForm = new Register();
+            this.Hide();
+            registerForm.ShowDialog();
+        }
     }
 }
