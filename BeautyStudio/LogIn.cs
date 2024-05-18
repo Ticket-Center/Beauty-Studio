@@ -13,5 +13,12 @@ namespace BeautyStudio
             this.Hide();
             registerForm.ShowDialog();
         }
+
+        private void btnLogIn_Click(object sender, EventArgs e)
+        {
+            HomePage homePageForm = new HomePage();
+            this.Hide();
+            homePageForm.ShowDialog();
+        }
     }
 }

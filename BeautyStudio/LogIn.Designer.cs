@@ -101,6 +101,7 @@
             btnLogIn.TabIndex = 6;
             btnLogIn.Text = "Log In";
             btnLogIn.UseVisualStyleBackColor = false;
+            btnLogIn.Click += btnLogIn_Click;
             // 
             // btnRegister
             // 
