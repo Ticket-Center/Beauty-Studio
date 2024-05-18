@@ -5,6 +5,8 @@ namespace BeautyStudio
         public LogIn()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(400, 150);
         }
 
         private void btnRegister_Click(object sender, EventArgs e)

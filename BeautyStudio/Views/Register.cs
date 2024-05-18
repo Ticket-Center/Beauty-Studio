@@ -15,6 +15,8 @@ namespace BeautyStudio
         public Register()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(400, 150);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
