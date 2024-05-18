@@ -8,16 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BeautyStudio
+namespace BeautyStudio.Views
 {
-    public partial class HomePage : Form
+    public partial class BookTreatmentsPage : Form
     {
-        public HomePage()
+        public BookTreatmentsPage()
         {
             InitializeComponent();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnAppointments_Click(object sender, EventArgs e)
+        {
+            HomePage homePageForm = new HomePage();
+            this.Hide();
+            homePageForm.ShowDialog();
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
         {
             LogIn logInForm = new LogIn();
             this.Hide();
