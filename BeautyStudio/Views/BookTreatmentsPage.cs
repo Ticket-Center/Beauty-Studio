@@ -30,5 +30,15 @@ namespace BeautyStudio.Views
             this.Hide();
             logInForm.ShowDialog();
         }
+
+        private void BookTreatmentsPage_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnHair_Click(object sender, EventArgs e)
+        {
+            pBImage.Image = Properties.Resources.HairImage;
+        }
     }
 }

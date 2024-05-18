@@ -39,7 +39,7 @@
             btnAppointments = new Button();
             panelGap2 = new Panel();
             panelBook = new Panel();
-            btnBook = new Button();
+            btnBooking = new Button();
             panelGap3 = new Panel();
             panelLogOut = new Panel();
             btnLogOut = new Button();
@@ -143,25 +143,25 @@
             // 
             // panelBook
             // 
-            panelBook.Controls.Add(btnBook);
+            panelBook.Controls.Add(btnBooking);
             panelBook.Location = new Point(3, 285);
             panelBook.Name = "panelBook";
             panelBook.Size = new Size(247, 50);
             panelBook.TabIndex = 1;
             // 
-            // btnBook
+            // btnBooking
             // 
-            btnBook.FlatAppearance.BorderColor = Color.FromArgb(183, 130, 187);
-            btnBook.FlatStyle = FlatStyle.Flat;
-            btnBook.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            btnBook.ForeColor = SystemColors.ControlLightLight;
-            btnBook.Location = new Point(0, 0);
-            btnBook.Name = "btnBook";
-            btnBook.Size = new Size(247, 50);
-            btnBook.TabIndex = 0;
-            btnBook.Text = "Book A Treatment";
-            btnBook.UseVisualStyleBackColor = true;
-            btnBook.Click += btnBook_Click;
+            btnBooking.FlatAppearance.BorderColor = Color.FromArgb(183, 130, 187);
+            btnBooking.FlatStyle = FlatStyle.Flat;
+            btnBooking.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnBooking.ForeColor = SystemColors.ControlLightLight;
+            btnBooking.Location = new Point(0, 0);
+            btnBooking.Name = "btnBooking";
+            btnBooking.Size = new Size(247, 50);
+            btnBooking.TabIndex = 0;
+            btnBooking.Text = "Book A Treatment";
+            btnBooking.UseVisualStyleBackColor = true;
+            btnBooking.Click += btnBook_Click;
             // 
             // panelGap3
             // 
@@ -221,7 +221,7 @@
         private Panel panelAppointments;
         private Button btnAppointments;
         private Panel panelBook;
-        private Button btnBook;
+        private Button btnBooking;
         private Panel panelGap3;
         private Panel panelLogOut;
         private Button btnLogOut;
