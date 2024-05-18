@@ -29,191 +29,201 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomePage));
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            panel1 = new Panel();
-            pictureBox1 = new PictureBox();
-            panel2 = new Panel();
-            label1 = new Label();
-            panel3 = new Panel();
-            panel4 = new Panel();
-            button1 = new Button();
-            panel5 = new Panel();
-            button2 = new Button();
-            panel6 = new Panel();
-            panel7 = new Panel();
-            button3 = new Button();
-            flowLayoutPanel1.SuspendLayout();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panel2.SuspendLayout();
-            panel4.SuspendLayout();
-            panel5.SuspendLayout();
-            panel7.SuspendLayout();
+            fLPanelMenu = new FlowLayoutPanel();
+            panelLogo = new Panel();
+            pBLogo = new PictureBox();
+            panelUsername = new Panel();
+            lbUsername = new Label();
+            panelGap1 = new Panel();
+            panelAppointments = new Panel();
+            btnAppointments = new Button();
+            panelBook = new Panel();
+            btnBook = new Button();
+            panelGap3 = new Panel();
+            panelLogOut = new Panel();
+            btnLogOut = new Button();
+            panelGap2 = new Panel();
+            fLPanelMenu.SuspendLayout();
+            panelLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pBLogo).BeginInit();
+            panelUsername.SuspendLayout();
+            panelAppointments.SuspendLayout();
+            panelBook.SuspendLayout();
+            panelLogOut.SuspendLayout();
             SuspendLayout();
             // 
-            // flowLayoutPanel1
+            // fLPanelMenu
             // 
-            flowLayoutPanel1.BackColor = Color.FromArgb(183, 130, 187);
-            flowLayoutPanel1.Controls.Add(panel1);
-            flowLayoutPanel1.Controls.Add(panel2);
-            flowLayoutPanel1.Controls.Add(panel3);
-            flowLayoutPanel1.Controls.Add(panel4);
-            flowLayoutPanel1.Controls.Add(panel5);
-            flowLayoutPanel1.Controls.Add(panel6);
-            flowLayoutPanel1.Controls.Add(panel7);
-            flowLayoutPanel1.Dock = DockStyle.Left;
-            flowLayoutPanel1.Location = new Point(0, 0);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(250, 603);
-            flowLayoutPanel1.TabIndex = 0;
+            fLPanelMenu.BackColor = Color.FromArgb(183, 130, 187);
+            fLPanelMenu.Controls.Add(panelLogo);
+            fLPanelMenu.Controls.Add(panelUsername);
+            fLPanelMenu.Controls.Add(panelGap1);
+            fLPanelMenu.Controls.Add(panelAppointments);
+            fLPanelMenu.Controls.Add(panelGap2);
+            fLPanelMenu.Controls.Add(panelBook);
+            fLPanelMenu.Controls.Add(panelGap3);
+            fLPanelMenu.Controls.Add(panelLogOut);
+            fLPanelMenu.Dock = DockStyle.Left;
+            fLPanelMenu.Location = new Point(0, 0);
+            fLPanelMenu.Name = "fLPanelMenu";
+            fLPanelMenu.Size = new Size(250, 603);
+            fLPanelMenu.TabIndex = 0;
             // 
-            // panel1
+            // panelLogo
             // 
-            panel1.Controls.Add(pictureBox1);
-            panel1.Location = new Point(3, 3);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(247, 125);
-            panel1.TabIndex = 0;
+            panelLogo.Controls.Add(pBLogo);
+            panelLogo.Location = new Point(3, 3);
+            panelLogo.Name = "panelLogo";
+            panelLogo.Size = new Size(247, 125);
+            panelLogo.TabIndex = 0;
             // 
-            // pictureBox1
+            // pBLogo
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(247, 125);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            pBLogo.Image = (Image)resources.GetObject("pBLogo.Image");
+            pBLogo.Location = new Point(0, 0);
+            pBLogo.Name = "pBLogo";
+            pBLogo.Size = new Size(247, 125);
+            pBLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            pBLogo.TabIndex = 0;
+            pBLogo.TabStop = false;
             // 
-            // panel2
+            // panelUsername
             // 
-            panel2.Controls.Add(label1);
-            panel2.Location = new Point(3, 134);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(247, 50);
-            panel2.TabIndex = 1;
+            panelUsername.Controls.Add(lbUsername);
+            panelUsername.Location = new Point(3, 134);
+            panelUsername.Name = "panelUsername";
+            panelUsername.Size = new Size(247, 50);
+            panelUsername.TabIndex = 1;
             // 
-            // label1
+            // lbUsername
             // 
-            label1.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(0, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(247, 50);
-            label1.TabIndex = 0;
-            label1.Text = "Hi, Username";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
+            lbUsername.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbUsername.ForeColor = SystemColors.ControlLightLight;
+            lbUsername.Location = new Point(0, 0);
+            lbUsername.Name = "lbUsername";
+            lbUsername.Size = new Size(247, 50);
+            lbUsername.TabIndex = 0;
+            lbUsername.Text = "Hi, Username";
+            lbUsername.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // panel3
+            // panelGap1
             // 
-            panel3.Location = new Point(3, 190);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(247, 22);
-            panel3.TabIndex = 1;
+            panelGap1.Location = new Point(3, 190);
+            panelGap1.Name = "panelGap1";
+            panelGap1.Size = new Size(247, 22);
+            panelGap1.TabIndex = 1;
             // 
-            // panel4
+            // panelAppointments
             // 
-            panel4.Controls.Add(button1);
-            panel4.Location = new Point(3, 218);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(247, 50);
-            panel4.TabIndex = 2;
+            panelAppointments.Controls.Add(btnAppointments);
+            panelAppointments.Location = new Point(3, 218);
+            panelAppointments.Name = "panelAppointments";
+            panelAppointments.Size = new Size(247, 50);
+            panelAppointments.TabIndex = 2;
             // 
-            // button1
+            // btnAppointments
             // 
-            button1.FlatAppearance.BorderColor = Color.FromArgb(183, 130, 187);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.ForeColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(0, 0);
-            button1.Name = "button1";
-            button1.Size = new Size(247, 50);
-            button1.TabIndex = 0;
-            button1.Text = "My Appointments";
-            button1.UseVisualStyleBackColor = true;
+            btnAppointments.FlatAppearance.BorderColor = Color.FromArgb(183, 130, 187);
+            btnAppointments.FlatStyle = FlatStyle.Flat;
+            btnAppointments.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAppointments.ForeColor = SystemColors.ControlLightLight;
+            btnAppointments.Location = new Point(0, 0);
+            btnAppointments.Name = "btnAppointments";
+            btnAppointments.Size = new Size(247, 50);
+            btnAppointments.TabIndex = 0;
+            btnAppointments.Text = "My Appointments";
+            btnAppointments.UseVisualStyleBackColor = true;
             // 
-            // panel5
+            // panelBook
             // 
-            panel5.Controls.Add(button2);
-            panel5.Location = new Point(3, 274);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(247, 50);
-            panel5.TabIndex = 1;
+            panelBook.Controls.Add(btnBook);
+            panelBook.Location = new Point(3, 295);
+            panelBook.Name = "panelBook";
+            panelBook.Size = new Size(247, 50);
+            panelBook.TabIndex = 1;
             // 
-            // button2
+            // btnBook
             // 
-            button2.FlatAppearance.BorderColor = Color.FromArgb(183, 130, 187);
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.ForeColor = SystemColors.ControlLightLight;
-            button2.Location = new Point(0, 0);
-            button2.Name = "button2";
-            button2.Size = new Size(247, 50);
-            button2.TabIndex = 0;
-            button2.Text = "Book A Treatment";
-            button2.UseVisualStyleBackColor = true;
+            btnBook.FlatAppearance.BorderColor = Color.FromArgb(183, 130, 187);
+            btnBook.FlatStyle = FlatStyle.Flat;
+            btnBook.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnBook.ForeColor = SystemColors.ControlLightLight;
+            btnBook.Location = new Point(0, 0);
+            btnBook.Name = "btnBook";
+            btnBook.Size = new Size(247, 50);
+            btnBook.TabIndex = 0;
+            btnBook.Text = "Book A Treatment";
+            btnBook.UseVisualStyleBackColor = true;
             // 
-            // panel6
+            // panelGap3
             // 
-            panel6.Location = new Point(3, 330);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(247, 178);
-            panel6.TabIndex = 1;
+            panelGap3.Location = new Point(3, 351);
+            panelGap3.Name = "panelGap3";
+            panelGap3.Size = new Size(247, 178);
+            panelGap3.TabIndex = 1;
             // 
-            // panel7
+            // panelLogOut
             // 
-            panel7.Controls.Add(button3);
-            panel7.Location = new Point(3, 514);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(247, 50);
-            panel7.TabIndex = 1;
+            panelLogOut.Controls.Add(btnLogOut);
+            panelLogOut.Location = new Point(3, 535);
+            panelLogOut.Name = "panelLogOut";
+            panelLogOut.Size = new Size(247, 50);
+            panelLogOut.TabIndex = 1;
             // 
-            // button3
+            // btnLogOut
             // 
-            button3.FlatAppearance.BorderColor = Color.FromArgb(183, 130, 187);
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            button3.ForeColor = SystemColors.ControlLightLight;
-            button3.Location = new Point(0, 0);
-            button3.Name = "button3";
-            button3.Size = new Size(247, 50);
-            button3.TabIndex = 0;
-            button3.Text = "Log Out";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            btnLogOut.FlatAppearance.BorderColor = Color.FromArgb(183, 130, 187);
+            btnLogOut.FlatStyle = FlatStyle.Flat;
+            btnLogOut.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLogOut.ForeColor = SystemColors.ControlLightLight;
+            btnLogOut.Location = new Point(0, 0);
+            btnLogOut.Name = "btnLogOut";
+            btnLogOut.Size = new Size(247, 50);
+            btnLogOut.TabIndex = 0;
+            btnLogOut.Text = "Log Out";
+            btnLogOut.UseVisualStyleBackColor = true;
+            btnLogOut.Click += button3_Click;
+            // 
+            // panelGap2
+            // 
+            panelGap2.Location = new Point(3, 274);
+            panelGap2.Name = "panelGap2";
+            panelGap2.Size = new Size(247, 15);
+            panelGap2.TabIndex = 1;
             // 
             // HomePage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1010, 603);
-            Controls.Add(flowLayoutPanel1);
+            Controls.Add(fLPanelMenu);
             Name = "HomePage";
             Text = "HomePage";
-            flowLayoutPanel1.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            panel2.ResumeLayout(false);
-            panel4.ResumeLayout(false);
-            panel5.ResumeLayout(false);
-            panel7.ResumeLayout(false);
+            fLPanelMenu.ResumeLayout(false);
+            panelLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pBLogo).EndInit();
+            panelUsername.ResumeLayout(false);
+            panelAppointments.ResumeLayout(false);
+            panelBook.ResumeLayout(false);
+            panelLogOut.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private FlowLayoutPanel flowLayoutPanel1;
-        private Panel panel1;
-        private PictureBox pictureBox1;
-        private Panel panel2;
-        private Label label1;
-        private Panel panel3;
-        private Panel panel4;
-        private Button button1;
-        private Panel panel5;
-        private Button button2;
-        private Panel panel6;
-        private Panel panel7;
-        private Button button3;
+        private FlowLayoutPanel fLPanelMenu;
+        private Panel panelLogo;
+        private PictureBox pBLogo;
+        private Panel panelUsername;
+        private Label lbUsername;
+        private Panel panelGap1;
+        private Panel panelAppointments;
+        private Button btnAppointments;
+        private Panel panelBook;
+        private Button btnBook;
+        private Panel panelGap3;
+        private Panel panelLogOut;
+        private Button btnLogOut;
+        private Panel panelGap2;
     }
 }
