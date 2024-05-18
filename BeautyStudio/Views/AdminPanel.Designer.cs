@@ -155,6 +155,7 @@
             btnLogOut.TabIndex = 0;
             btnLogOut.Text = "Log Out";
             btnLogOut.UseVisualStyleBackColor = true;
+            btnLogOut.Click += btnLogOut_Click;
             // 
             // AdminPanel
             // 

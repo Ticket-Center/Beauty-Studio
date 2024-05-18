@@ -1,6 +1,6 @@
-﻿namespace BeautyStudio
+﻿namespace BeautyStudio.Views
 {
-    partial class HomePage
+    partial class BookTreatmentsPage
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomePage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookTreatmentsPage));
             fLPanelMenu = new FlowLayoutPanel();
             panelLogo = new Panel();
             pBLogo = new PictureBox();
             panelUsername = new Panel();
-            lbUsername = new Label();
+            lbLogo = new Label();
             panelGap1 = new Panel();
             panelAppointments = new Panel();
             btnAppointments = new Button();
@@ -89,22 +89,22 @@
             // 
             // panelUsername
             // 
-            panelUsername.Controls.Add(lbUsername);
+            panelUsername.Controls.Add(lbLogo);
             panelUsername.Location = new Point(3, 134);
             panelUsername.Name = "panelUsername";
             panelUsername.Size = new Size(247, 50);
             panelUsername.TabIndex = 1;
             // 
-            // lbUsername
+            // lbLogo
             // 
-            lbUsername.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            lbUsername.ForeColor = SystemColors.ControlLightLight;
-            lbUsername.Location = new Point(0, 0);
-            lbUsername.Name = "lbUsername";
-            lbUsername.Size = new Size(247, 50);
-            lbUsername.TabIndex = 0;
-            lbUsername.Text = "Hi, Username";
-            lbUsername.TextAlign = ContentAlignment.MiddleCenter;
+            lbLogo.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbLogo.ForeColor = SystemColors.ControlLightLight;
+            lbLogo.Location = new Point(0, 0);
+            lbLogo.Name = "lbLogo";
+            lbLogo.Size = new Size(247, 50);
+            lbLogo.TabIndex = 0;
+            lbLogo.Text = "Hi, Username";
+            lbLogo.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panelGap1
             // 
@@ -123,23 +123,24 @@
             // 
             // btnAppointments
             // 
-            btnAppointments.FlatAppearance.BorderColor = Color.White;
+            btnAppointments.FlatAppearance.BorderColor = Color.FromArgb(183, 130, 187);
             btnAppointments.FlatStyle = FlatStyle.Flat;
             btnAppointments.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             btnAppointments.ForeColor = SystemColors.ControlLightLight;
             btnAppointments.Location = new Point(0, 0);
             btnAppointments.Name = "btnAppointments";
             btnAppointments.Size = new Size(247, 50);
-            btnAppointments.TabIndex = 0;
+            btnAppointments.TabIndex = 1;
             btnAppointments.Text = "My Appointments";
             btnAppointments.UseVisualStyleBackColor = true;
+            btnAppointments.Click += btnAppointments_Click;
             // 
             // panelGap2
             // 
             panelGap2.Location = new Point(3, 274);
             panelGap2.Name = "panelGap2";
             panelGap2.Size = new Size(247, 5);
-            panelGap2.TabIndex = 1;
+            panelGap2.TabIndex = 0;
             // 
             // panelBook
             // 
@@ -147,11 +148,11 @@
             panelBook.Location = new Point(3, 285);
             panelBook.Name = "panelBook";
             panelBook.Size = new Size(247, 50);
-            panelBook.TabIndex = 1;
+            panelBook.TabIndex = 0;
             // 
             // btnBook
             // 
-            btnBook.FlatAppearance.BorderColor = Color.FromArgb(183, 130, 187);
+            btnBook.FlatAppearance.BorderColor = Color.White;
             btnBook.FlatStyle = FlatStyle.Flat;
             btnBook.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             btnBook.ForeColor = SystemColors.ControlLightLight;
@@ -161,14 +162,13 @@
             btnBook.TabIndex = 0;
             btnBook.Text = "Book A Treatment";
             btnBook.UseVisualStyleBackColor = true;
-            btnBook.Click += btnBook_Click;
             // 
             // panelGap3
             // 
             panelGap3.Location = new Point(3, 341);
             panelGap3.Name = "panelGap3";
             panelGap3.Size = new Size(247, 178);
-            panelGap3.TabIndex = 1;
+            panelGap3.TabIndex = 0;
             // 
             // panelLogOut
             // 
@@ -176,7 +176,7 @@
             panelLogOut.Location = new Point(3, 525);
             panelLogOut.Name = "panelLogOut";
             panelLogOut.Size = new Size(247, 50);
-            panelLogOut.TabIndex = 1;
+            panelLogOut.TabIndex = 0;
             // 
             // btnLogOut
             // 
@@ -192,13 +192,13 @@
             btnLogOut.UseVisualStyleBackColor = true;
             btnLogOut.Click += btnLogOut_Click;
             // 
-            // HomePage
+            // BookTreatmentsPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1010, 603);
             Controls.Add(fLPanelMenu);
-            Name = "HomePage";
+            Name = "BookTreatmentsPage";
             Text = "Beauty Studio";
             fLPanelMenu.ResumeLayout(false);
             panelLogo.ResumeLayout(false);
@@ -216,15 +216,15 @@
         private Panel panelLogo;
         private PictureBox pBLogo;
         private Panel panelUsername;
-        private Label lbUsername;
+        private Label lbLogo;
         private Panel panelGap1;
         private Panel panelAppointments;
-        private Button btnAppointments;
+        private Panel panelGap2;
         private Panel panelBook;
-        private Button btnBook;
         private Panel panelGap3;
+        private Button btnAppointments;
+        private Button btnBook;
         private Panel panelLogOut;
         private Button btnLogOut;
-        private Panel panelGap2;
     }
 }

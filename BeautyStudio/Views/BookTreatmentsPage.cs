@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace BeautyStudio.Views
 {
-    public partial class AdminPanel : Form
+    public partial class BookTreatmentsPage : Form
     {
-        public AdminPanel()
+        public BookTreatmentsPage()
         {
             InitializeComponent();
+        }
+
+        private void btnAppointments_Click(object sender, EventArgs e)
+        {
+            HomePage homePageForm = new HomePage();
+            this.Hide();
+            homePageForm.ShowDialog();
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)

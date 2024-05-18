@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BeautyStudio.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,7 +18,14 @@ namespace BeautyStudio
             InitializeComponent();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnBook_Click(object sender, EventArgs e)
+        {
+            BookTreatmentsPage bookTreatmentsForm = new BookTreatmentsPage();
+            this.Hide();
+            bookTreatmentsForm.ShowDialog();
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
         {
             LogIn logInForm = new LogIn();
             this.Hide();
