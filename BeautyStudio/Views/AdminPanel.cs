@@ -15,6 +15,8 @@ namespace BeautyStudio.Views
         public AdminPanel()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(400, 150);
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)

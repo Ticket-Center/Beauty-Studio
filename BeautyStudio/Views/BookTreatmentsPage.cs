@@ -15,6 +15,8 @@ namespace BeautyStudio.Views
         public BookTreatmentsPage()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(400, 150);
         }
 
         private void btnAppointments_Click(object sender, EventArgs e)
@@ -29,11 +31,6 @@ namespace BeautyStudio.Views
             LogIn logInForm = new LogIn();
             this.Hide();
             logInForm.ShowDialog();
-        }
-
-        private void BookTreatmentsPage_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void btnHair_Click(object sender, EventArgs e)

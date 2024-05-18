@@ -16,6 +16,8 @@ namespace BeautyStudio
         public HomePage()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(400, 150);
         }
 
         private void btnBook_Click(object sender, EventArgs e)
