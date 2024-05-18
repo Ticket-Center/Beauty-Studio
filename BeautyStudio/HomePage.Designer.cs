@@ -96,11 +96,13 @@
             // label1
             // 
             label1.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ControlLightLight;
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
             label1.Size = new Size(247, 50);
             label1.TabIndex = 0;
             label1.Text = "Hi, Username";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel3
             // 
@@ -119,11 +121,15 @@
             // 
             // button1
             // 
+            button1.FlatAppearance.BorderColor = Color.FromArgb(183, 130, 187);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.ForeColor = SystemColors.ControlLightLight;
             button1.Location = new Point(0, 0);
             button1.Name = "button1";
             button1.Size = new Size(247, 50);
             button1.TabIndex = 0;
-            button1.Text = "button1";
+            button1.Text = "My Appointments";
             button1.UseVisualStyleBackColor = true;
             // 
             // panel5
@@ -136,11 +142,15 @@
             // 
             // button2
             // 
+            button2.FlatAppearance.BorderColor = Color.FromArgb(183, 130, 187);
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.ForeColor = SystemColors.ControlLightLight;
             button2.Location = new Point(0, 0);
             button2.Name = "button2";
             button2.Size = new Size(247, 50);
             button2.TabIndex = 0;
-            button2.Text = "button2";
+            button2.Text = "Book A Treatment";
             button2.UseVisualStyleBackColor = true;
             // 
             // panel6
@@ -160,12 +170,17 @@
             // 
             // button3
             // 
+            button3.FlatAppearance.BorderColor = Color.FromArgb(183, 130, 187);
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            button3.ForeColor = SystemColors.ControlLightLight;
             button3.Location = new Point(0, 0);
             button3.Name = "button3";
             button3.Size = new Size(247, 50);
             button3.TabIndex = 0;
-            button3.Text = "button3";
+            button3.Text = "Log Out";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // HomePage
             // 

@@ -16,5 +16,12 @@ namespace BeautyStudio
         {
             InitializeComponent();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            LogIn logInForm = new LogIn();
+            this.Hide();
+            logInForm.ShowDialog();
+        }
     }
 }
