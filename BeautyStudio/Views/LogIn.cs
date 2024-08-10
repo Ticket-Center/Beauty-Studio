@@ -1,3 +1,8 @@
+using BeautyStudio.DatabaseConfiguration;
+using System.Data.SqlClient;
+using System.Data;
+using System.Windows.Forms;
+
 namespace BeautyStudio
 {
     public partial class LogIn : Form
