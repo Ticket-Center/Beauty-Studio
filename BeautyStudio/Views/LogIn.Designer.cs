@@ -87,6 +87,7 @@
             txtPassword.Margin = new Padding(3, 4, 3, 4);
             txtPassword.Multiline = true;
             txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(300, 35);
             txtPassword.TabIndex = 5;
             // 
@@ -95,7 +96,7 @@
             btnLogIn.BackColor = Color.Plum;
             btnLogIn.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnLogIn.ForeColor = SystemColors.ControlLightLight;
-            btnLogIn.Location = new Point(350, 444);
+            btnLogIn.Location = new Point(349, 457);
             btnLogIn.Name = "btnLogIn";
             btnLogIn.Size = new Size(123, 54);
             btnLogIn.TabIndex = 6;
@@ -108,7 +109,7 @@
             btnRegister.BackColor = Color.Plum;
             btnRegister.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnRegister.ForeColor = SystemColors.ControlLightLight;
-            btnRegister.Location = new Point(508, 444);
+            btnRegister.Location = new Point(507, 457);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(123, 54);
             btnRegister.TabIndex = 7;

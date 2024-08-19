@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BeautyStudio.SessionManagement;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,11 @@ namespace BeautyStudio.Views
             InitializeComponent();
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(400, 150);
+
+            if (UserSession.Instance.isLoggedIn())
+            {
+                lbUsername.Text = $"Hi, {UserSession.Instance.Username}";
+            }
         }
 
         private void btnAppointments_Click(object sender, EventArgs e)
@@ -28,6 +34,7 @@ namespace BeautyStudio.Views
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
+            UserSession.Instance.ClearUser();
             LogIn logInForm = new LogIn();
             this.Hide();
             logInForm.ShowDialog();
