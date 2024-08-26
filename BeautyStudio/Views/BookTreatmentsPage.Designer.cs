@@ -33,7 +33,7 @@
             panelLogo = new Panel();
             pBLogo = new PictureBox();
             panelUsername = new Panel();
-            lbLogo = new Label();
+            lbUsername = new Label();
             panelGap1 = new Panel();
             panelAppointments = new Panel();
             btnAppointments = new Button();
@@ -98,22 +98,22 @@
             // 
             // panelUsername
             // 
-            panelUsername.Controls.Add(lbLogo);
+            panelUsername.Controls.Add(lbUsername);
             panelUsername.Location = new Point(3, 134);
             panelUsername.Name = "panelUsername";
             panelUsername.Size = new Size(247, 50);
             panelUsername.TabIndex = 1;
             // 
-            // lbLogo
+            // lbUsername
             // 
-            lbLogo.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            lbLogo.ForeColor = SystemColors.ControlLightLight;
-            lbLogo.Location = new Point(0, 0);
-            lbLogo.Name = "lbLogo";
-            lbLogo.Size = new Size(247, 50);
-            lbLogo.TabIndex = 0;
-            lbLogo.Text = "Hi, Username";
-            lbLogo.TextAlign = ContentAlignment.MiddleCenter;
+            lbUsername.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbUsername.ForeColor = SystemColors.ControlLightLight;
+            lbUsername.Location = new Point(0, 0);
+            lbUsername.Name = "lbUsername";
+            lbUsername.Size = new Size(247, 50);
+            lbUsername.TabIndex = 0;
+            lbUsername.Text = "Hi, Username";
+            lbUsername.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panelGap1
             // 
@@ -324,7 +324,7 @@
         private Panel panelLogo;
         private PictureBox pBLogo;
         private Panel panelUsername;
-        private Label lbLogo;
+        private Label lbUsername;
         private Panel panelGap1;
         private Panel panelAppointments;
         private Panel panelGap2;

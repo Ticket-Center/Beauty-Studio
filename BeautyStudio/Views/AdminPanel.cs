@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BeautyStudio.SessionManagement;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,7 @@ namespace BeautyStudio.Views
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
+            UserSession.Instance.ClearUser();
             LogIn logInForm = new LogIn();
             this.Hide();
             logInForm.ShowDialog();
