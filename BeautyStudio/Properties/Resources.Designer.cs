@@ -63,9 +63,29 @@ namespace BeautyStudio.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FaceImage {
+            get {
+                object obj = ResourceManager.GetObject("FaceImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap HairImage {
             get {
                 object obj = ResourceManager.GetObject("HairImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NailsImage {
+            get {
+                object obj = ResourceManager.GetObject("NailsImage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
