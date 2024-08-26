@@ -67,6 +67,7 @@
             btnRegister.TabIndex = 12;
             btnRegister.Text = "Register";
             btnRegister.UseVisualStyleBackColor = false;
+            btnRegister.Click += btnRegister_Click;
             // 
             // txtLastName
             // 
@@ -165,6 +166,7 @@
             txtPassword.Margin = new Padding(3, 4, 3, 4);
             txtPassword.Multiline = true;
             txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(215, 35);
             txtPassword.TabIndex = 18;
             // 
