@@ -44,5 +44,15 @@ namespace BeautyStudio.Views
         {
             pBImage.Image = Properties.Resources.HairImage;
         }
+
+        private void btnNails_Click(object sender, EventArgs e)
+        {
+            pBImage.Image = Properties.Resources.NailsImage;
+        }
+
+        private void btnFace_Click(object sender, EventArgs e)
+        {
+            pBImage.Image = Properties.Resources.FaceImage;
+        }
     }
 }

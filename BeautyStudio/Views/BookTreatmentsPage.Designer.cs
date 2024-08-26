@@ -228,6 +228,7 @@
             btnNails.TabIndex = 2;
             btnNails.Text = "Nails";
             btnNails.UseVisualStyleBackColor = false;
+            btnNails.Click += btnNails_Click;
             // 
             // btnFace
             // 
@@ -241,6 +242,7 @@
             btnFace.TabIndex = 3;
             btnFace.Text = "Face";
             btnFace.UseVisualStyleBackColor = false;
+            btnFace.Click += btnFace_Click;
             // 
             // pBImage
             // 
