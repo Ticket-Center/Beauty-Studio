@@ -4,16 +4,20 @@ using System.Data;
 using System.Windows.Forms;
 using BeautyStudio.SessionManagement;
 using BeautyStudio.Views;
+using BeautyStudio.Services;
 
 namespace BeautyStudio
 {
     public partial class LogIn : Form
     {
+        private LogInService _logInService;
         public LogIn()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(400, 150);
+
+            _logInService = new LogInService();
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -34,11 +38,15 @@ namespace BeautyStudio
                 return;
             }
 
-            bool isAuthenticated = AuthenticateUser(username, password);
+            int userId;
+            string role;
+            bool isAuthenticated = _logInService.AuthenticateUser(username, password, out userId, out role);
 
             if (isAuthenticated)
             {
-                if (UserSession.Instance.Role == "admin")
+                UserSession.Instance.SetUser(username, userId, role);
+
+                if (role == "admin")
                 {
                     AdminPanel adminPanelForm = new AdminPanel();
                     this.Hide();
@@ -46,7 +54,6 @@ namespace BeautyStudio
                 }
                 else
                 {
-
                     HomePage homePageForm = new HomePage();
                     this.Hide();
                     homePageForm.ShowDialog();
@@ -55,46 +62,6 @@ namespace BeautyStudio
             else
             {
                 MessageBox.Show("Invalid username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        private bool AuthenticateUser(string username, string password)
-        {
-            try
-            {
-                Sql_Configuration sqlConfig = Sql_Configuration.getInstance();
-                SqlConnection con = sqlConfig.getConnection();
-
-                string query = "SELECT id, role FROM Users WHERE Username=@Username AND Password=@Password";
-
-                using (SqlCommand cmd = new SqlCommand(query, con))
-                {
-                    cmd.Parameters.AddWithValue("@Username", username);
-                    cmd.Parameters.AddWithValue("@Password", password);
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            int userId = Convert.ToInt32(reader["id"]);
-                            string role = reader["role"].ToString();
-
-                            UserSession.Instance.SetUser(username, userId, role);
-
-                            return true;
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occured: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
             }
         }
     }
