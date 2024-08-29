@@ -40,12 +40,16 @@
             panelGap2 = new Panel();
             panelLogOut = new Panel();
             btnLogOut = new Button();
+            dataGridViewAppointments = new DataGridView();
+            btnCancel = new Button();
+            btnComplete = new Button();
             fLPanelMenu.SuspendLayout();
             panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panelAdmin.SuspendLayout();
             panelAppointments.SuspendLayout();
             panelLogOut.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).BeginInit();
             SuspendLayout();
             // 
             // fLPanelMenu
@@ -157,11 +161,49 @@
             btnLogOut.UseVisualStyleBackColor = true;
             btnLogOut.Click += btnLogOut_Click;
             // 
+            // dataGridViewAppointments
+            // 
+            dataGridViewAppointments.BackgroundColor = Color.Plum;
+            dataGridViewAppointments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewAppointments.Location = new Point(296, 51);
+            dataGridViewAppointments.Name = "dataGridViewAppointments";
+            dataGridViewAppointments.RowHeadersWidth = 51;
+            dataGridViewAppointments.RowTemplate.Height = 29;
+            dataGridViewAppointments.Size = new Size(673, 385);
+            dataGridViewAppointments.TabIndex = 1;
+            // 
+            // btnCancel
+            // 
+            btnCancel.BackColor = Color.Plum;
+            btnCancel.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCancel.ForeColor = SystemColors.ControlLightLight;
+            btnCancel.Location = new Point(479, 490);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(123, 54);
+            btnCancel.TabIndex = 2;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = false;
+            // 
+            // btnComplete
+            // 
+            btnComplete.BackColor = Color.Plum;
+            btnComplete.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnComplete.ForeColor = SystemColors.ControlLightLight;
+            btnComplete.Location = new Point(691, 490);
+            btnComplete.Name = "btnComplete";
+            btnComplete.Size = new Size(123, 54);
+            btnComplete.TabIndex = 3;
+            btnComplete.Text = "Complete";
+            btnComplete.UseVisualStyleBackColor = false;
+            // 
             // AdminPanel
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1010, 603);
+            Controls.Add(btnComplete);
+            Controls.Add(btnCancel);
+            Controls.Add(dataGridViewAppointments);
             Controls.Add(fLPanelMenu);
             Name = "AdminPanel";
             Text = "Beauty Studio";
@@ -171,6 +213,7 @@
             panelAdmin.ResumeLayout(false);
             panelAppointments.ResumeLayout(false);
             panelLogOut.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).EndInit();
             ResumeLayout(false);
         }
 
@@ -187,5 +230,8 @@
         private Panel panelGap2;
         private Panel panelLogOut;
         private Button btnLogOut;
+        private DataGridView dataGridViewAppointments;
+        private Button btnCancel;
+        private Button btnComplete;
     }
 }
