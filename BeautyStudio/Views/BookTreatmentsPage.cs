@@ -16,7 +16,10 @@ namespace BeautyStudio.Views
     {
         private ServiceTypeService _serviceTypeService;
         private AppointmentService _appointmentService;
-        private string selectedCategory;  // Add this to store the selected category
+        private AppointmentManagementService _appointmentManagementService;
+        private EmployeeService _employeeService;
+
+        private string selectedCategory;
 
         public BookTreatmentsPage()
         {
@@ -29,6 +32,8 @@ namespace BeautyStudio.Views
 
             _serviceTypeService = new ServiceTypeService();
             _appointmentService = new AppointmentService();
+            _appointmentManagementService = new AppointmentManagementService();
+            _employeeService = new EmployeeService();
 
             if (UserSession.Instance.isLoggedIn())
             {
@@ -59,14 +64,16 @@ namespace BeautyStudio.Views
             pBImage.Image = Properties.Resources.HairImage;
             cbHour.Items.Clear();
             LoadServiceTypes(selectedCategory);
+            //LoadEmployees(selectedCategory);
         }
 
         private void btnNails_Click(object sender, EventArgs e)
         {
-            selectedCategory = "nails"; 
+            selectedCategory = "nails";
             pBImage.Image = Properties.Resources.NailsImage;
             cbHour.Items.Clear();
             LoadServiceTypes(selectedCategory);
+            //LoadEmployees(selectedCategory);
         }
 
         private void btnFace_Click(object sender, EventArgs e)
@@ -75,6 +82,7 @@ namespace BeautyStudio.Views
             pBImage.Image = Properties.Resources.FaceImage;
             cbHour.Items.Clear();
             LoadServiceTypes(selectedCategory);
+            //LoadEmployees(selectedCategory);
         }
 
         private void LoadServiceTypes(string category)
@@ -83,8 +91,8 @@ namespace BeautyStudio.Views
             {
                 DataTable serviceTypes = _serviceTypeService.GetServiceTypesByCategory(category);
                 cbService.DataSource = serviceTypes;
-                cbService.DisplayMember = "Service";
-                cbService.ValueMember = "Service";
+                cbService.DisplayMember = "Service";  // Display name of the service
+                cbService.ValueMember = "Id";         // ID of the service
             }
             catch (Exception ex)
             {
@@ -154,6 +162,76 @@ namespace BeautyStudio.Views
                 MessageBox.Show("Error loading available hours: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnBook_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(selectedCategory))
+            {
+                MessageBox.Show("Please select a category first.", "Category Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cbService.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a service.", "Service Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cbHour.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select an hour.", "Hour Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DateTime appointmentDate = dPickerDate.Value.Date;
+            string appointmentHour = cbHour.SelectedItem.ToString();
+            int serviceTypeId = Convert.ToInt32(cbService.SelectedValue);
+            //int employeeId = Convert.ToInt32(cbEmployee.SelectedValue);
+            int employeeId = 1;
+
+            try
+            {
+                int userId = UserSession.Instance.UserId;
+                _appointmentManagementService.AddAppointment(appointmentDate, appointmentHour, "active", employeeId, serviceTypeId, userId);
+                MessageBox.Show("Appointment booked successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error booking appointment: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        /*private void LoadEmployees(string category)
+        {
+            try
+            {
+                string employeeType = GetEmployeeTypeByCategory(category); // Implement this method to get employee type based on category
+                DataTable employees = _employeeService.GetEmployeesByType(employeeType);
+                cbEmployee.DataSource = employees;
+                cbEmployee.DisplayMember = "full_name";
+                cbEmployee.ValueMember = "id";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading employees: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private string GetEmployeeTypeByCategory(string category)
+        {
+            switch (category.ToLower())
+            {
+                case "hair":
+                    return "Hairstylist";
+                case "nails":
+                    return "Manicurist";
+                case "face":
+                    return "Esthetician";
+                default:
+                    return null;
+            }
+        }*/
+
+
     }
 
 }

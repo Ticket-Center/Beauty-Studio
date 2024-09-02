@@ -21,15 +21,16 @@ namespace BeautyStudio.Services
                 SqlConnection con = sqlConfig.getConnection();
 
                 string query = @"
-                    SELECT 
-                        st.service AS [Service],
-                        st.duration AS [Duration]
-                    FROM 
-                        [beauty-studio].[dbo].[ServiceTypes] st
-                    INNER JOIN 
-                        [beauty-studio].[dbo].[ServiceCategories] sc ON st.category = sc.id
-                    WHERE 
-                        sc.category = @Category";
+                        SELECT 
+                            st.service AS [Service],
+                            st.id AS [Id],          
+                            st.duration AS [Duration]
+                        FROM 
+                            [beauty-studio].[dbo].[ServiceTypes] st
+                        INNER JOIN 
+                            [beauty-studio].[dbo].[ServiceCategories] sc ON st.category = sc.id
+                        WHERE 
+                            sc.category = @Category";
 
                 using (SqlDataAdapter adapter = new SqlDataAdapter(query, con))
                 {

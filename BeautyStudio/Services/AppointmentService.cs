@@ -128,7 +128,6 @@ namespace BeautyStudio.Services
                     adapter.SelectCommand.Parameters.AddWithValue("@Category", category);
                     adapter.Fill(dt);
                 }
-                Console.WriteLine("Number of appointments fetched: " + dt.Rows.Count);
             }
             catch (Exception ex)
             {

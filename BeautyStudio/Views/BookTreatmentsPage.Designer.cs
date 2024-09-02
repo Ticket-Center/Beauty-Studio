@@ -51,6 +51,7 @@
             dPickerDate = new DateTimePicker();
             cbService = new ComboBox();
             cbHour = new ComboBox();
+            cbEmployee = new ComboBox();
             fLPanelMenu.SuspendLayout();
             panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pBLogo).BeginInit();
@@ -266,6 +267,7 @@
             btnBook.TabIndex = 5;
             btnBook.Text = "Book";
             btnBook.UseVisualStyleBackColor = false;
+            btnBook.Click += btnBook_Click;
             // 
             // dPickerDate
             // 
@@ -293,12 +295,22 @@
             cbHour.TabIndex = 8;
             cbHour.Text = "Hour";
             // 
+            // cbEmployee
+            // 
+            cbEmployee.FormattingEnabled = true;
+            cbEmployee.Location = new Point(766, 190);
+            cbEmployee.Name = "cbEmployee";
+            cbEmployee.Size = new Size(157, 28);
+            cbEmployee.TabIndex = 9;
+            cbEmployee.Text = "Select Technician";
+            // 
             // BookTreatmentsPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(1010, 603);
+            Controls.Add(cbEmployee);
             Controls.Add(cbHour);
             Controls.Add(cbService);
             Controls.Add(dPickerDate);
@@ -345,5 +357,6 @@
         private DateTimePicker dPickerDate;
         private ComboBox cbService;
         private ComboBox cbHour;
+        private ComboBox cbEmployee;
     }
 }

@@ -67,5 +67,52 @@ namespace BeautyStudio.Services
                 throw new ApplicationException("An error occurred while updating the appointment status.", ex);
             }
         }
+
+        public void AddAppointment(DateTime appointmentDate, string appointmentHour, string statusName, int employeeId, int serviceTypeId, int userId)
+        {
+            int statusId = GetStatusId(statusName);
+            if (statusId == -1)
+            {
+                throw new ApplicationException("Invalid status name.");
+            }
+
+            try
+            {
+                Sql_Configuration sqlConfig = Sql_Configuration.getInstance();
+                SqlConnection con = sqlConfig.getConnection();
+
+                // Prepare the query to insert a new appointment
+                string query = "INSERT INTO [beauty-studio].[dbo].[Appointments] (appointmentDate, appointmentHour, status, employee, serviceType) " +
+                               "VALUES (@AppointmentDate, @AppointmentHour, @Status, @Employee, @ServiceType); " +
+                               "SELECT SCOPE_IDENTITY();"; // Get the ID of the inserted appointment
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@AppointmentDate", appointmentDate);
+                    cmd.Parameters.AddWithValue("@AppointmentHour", TimeSpan.Parse(appointmentHour)); 
+                    cmd.Parameters.AddWithValue("@Status", statusId); 
+                    cmd.Parameters.AddWithValue("@Employee", employeeId);
+                    cmd.Parameters.AddWithValue("@ServiceType", serviceTypeId);
+
+                    // Execute the query and get the new appointment ID
+                    int newAppointmentId = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    // Insert into UserAppointments table
+                    string userAppointmentsQuery = "INSERT INTO [beauty-studio].[dbo].[UserAppointments] (appointment_id, user_id) " +
+                                                   "VALUES (@AppointmentID, @UserID)";
+                    using (SqlCommand userCmd = new SqlCommand(userAppointmentsQuery, con))
+                    {
+                        userCmd.Parameters.AddWithValue("@AppointmentID", newAppointmentId);
+                        userCmd.Parameters.AddWithValue("@UserID", userId);
+
+                        userCmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("An error occurred while adding the appointment.", ex);
+            }
+        }
     }
 }
