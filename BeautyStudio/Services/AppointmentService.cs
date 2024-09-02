@@ -23,6 +23,7 @@ namespace BeautyStudio.Services
 
                 string query = @"
                             SELECT 
+                                a.id,
                                 a.appointmentDate,
                                 a.appointmentHour,
                                 s.status AS [Status],

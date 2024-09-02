@@ -33,10 +33,15 @@ namespace BeautyStudio.Views
             {
                 DataTable appointments = _appointmentService.GetAppointments();
                 dataGridViewAppointments.DataSource = appointments;
+
+                if (dataGridViewAppointments.Columns["id"] != null)
+                {
+                    dataGridViewAppointments.Columns["id"].Visible = false;
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading appointments", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error loading appointments: " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -48,23 +53,45 @@ namespace BeautyStudio.Views
             logInForm.ShowDialog();
         }
 
-        /*private void btnCancel_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             UpdateAppointmentStatus("Canceled");
-        }*/
+        }
 
-        /*private void UpdateAppointmentStatus(string status)
+        private void btnComplete_Click(object sender, EventArgs e)
+        {
+            UpdateAppointmentStatus("Completed");
+        }
+
+        private void UpdateAppointmentStatus(string status)
         {
             if (dataGridViewAppointments.SelectedRows.Count > 0)
             {
                 var selectedRow = dataGridViewAppointments.SelectedRows[0];
-                int appointmentId = Convert.ToInt32(selectedRow.Cells["id"].Value); // Adjust "id" to your actual column name
+                int appointmentId = Convert.ToInt32(selectedRow.Cells["id"].Value);
+                DateTime appointmentDate = Convert.ToDateTime(selectedRow.Cells["appointmentDate"].Value);
+                TimeSpan appointmentHour = TimeSpan.Parse(selectedRow.Cells["appointmentHour"].Value.ToString());
+
+                DateTime appointmentDateTime = appointmentDate.Date + appointmentHour;
+
+                string currentStatus = selectedRow.Cells["Status"].Value.ToString();
+                if (currentStatus != "active")
+                {
+                    MessageBox.Show("Only appointments with 'active' status can be updated.", "Invalid Operation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (status == "Completed" && DateTime.Now < appointmentDateTime)
+                {
+                    MessageBox.Show("You cannot complete an appointment before its scheduled time.", "Invalid Operation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
                 try
                 {
                     _appointmentManagementService.UpdateAppointmentStatus(appointmentId, status);
                     MessageBox.Show($"Appointment {status} successfully.");
-                    LoadAppointments(); // Refresh the data grid view to show updated status
+                    LoadAppointments();
                 }
                 catch (ApplicationException ex)
                 {
@@ -75,6 +102,6 @@ namespace BeautyStudio.Views
             {
                 MessageBox.Show("Please select an appointment to update.");
             }
-        }*/
+        }
     }
 }

@@ -165,7 +165,7 @@
             // 
             dataGridViewAppointments.BackgroundColor = Color.Plum;
             dataGridViewAppointments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewAppointments.Location = new Point(296, 51);
+            dataGridViewAppointments.Location = new Point(298, 180);
             dataGridViewAppointments.Name = "dataGridViewAppointments";
             dataGridViewAppointments.RowHeadersWidth = 51;
             dataGridViewAppointments.RowTemplate.Height = 29;
@@ -177,24 +177,26 @@
             btnCancel.BackColor = Color.Plum;
             btnCancel.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnCancel.ForeColor = SystemColors.ControlLightLight;
-            btnCancel.Location = new Point(479, 490);
+            btnCancel.Location = new Point(298, 103);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(123, 54);
             btnCancel.TabIndex = 2;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = false;
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnComplete
             // 
             btnComplete.BackColor = Color.Plum;
             btnComplete.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnComplete.ForeColor = SystemColors.ControlLightLight;
-            btnComplete.Location = new Point(691, 490);
+            btnComplete.Location = new Point(443, 103);
             btnComplete.Name = "btnComplete";
             btnComplete.Size = new Size(123, 54);
             btnComplete.TabIndex = 3;
             btnComplete.Text = "Complete";
             btnComplete.UseVisualStyleBackColor = false;
+            btnComplete.Click += btnComplete_Click;
             // 
             // AdminPanel
             // 
