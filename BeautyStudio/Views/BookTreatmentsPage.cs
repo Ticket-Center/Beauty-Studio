@@ -71,6 +71,8 @@ namespace BeautyStudio.Views
             {
                 DataTable serviceTypes = _serviceTypeService.GetServiceTypesByCategory(category);
                 cbService.DataSource = serviceTypes;
+                cbService.DisplayMember = "Service";  
+                cbService.ValueMember = "Service";
             }
             catch (Exception ex)
             {
