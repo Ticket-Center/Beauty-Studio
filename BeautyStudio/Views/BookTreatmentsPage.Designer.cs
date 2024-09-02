@@ -273,6 +273,7 @@
             dPickerDate.Name = "dPickerDate";
             dPickerDate.Size = new Size(157, 27);
             dPickerDate.TabIndex = 6;
+            dPickerDate.ValueChanged += dPickerDate_ValueChanged;
             // 
             // cbService
             // 

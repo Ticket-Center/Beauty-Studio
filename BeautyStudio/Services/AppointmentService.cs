@@ -91,11 +91,51 @@ namespace BeautyStudio.Services
                     adapter.SelectCommand.Parameters.AddWithValue("@UserId", userId);
                     adapter.Fill(dt);
                 }
-            }catch(Exception ex) 
+            }
+            catch(Exception ex) 
             {
                 throw new ApplicationException("An error occurred while retrieving user appointments.", ex);
             }
             return dt;
         }
+
+        public DataTable GetAppointmentsForDateAndCategory(DateTime date, string category)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                Sql_Configuration sqlConfig = Sql_Configuration.getInstance();
+                SqlConnection con = sqlConfig.getConnection();
+
+                string query = @"
+                SELECT
+                    a.appointmentHour,
+                    st.duration
+                FROM
+                    [beauty-studio].[dbo].[Appointments] a
+                INNER JOIN
+                    [beauty-studio].[dbo].[ServiceTypes] st ON a.serviceType = st.id
+                INNER JOIN
+                    [beauty-studio].[dbo].[ServiceCategories] sc ON st.category = sc.id
+                WHERE
+                    CAST(a.appointmentDate AS DATE) = @Date
+                    AND sc.category = @Category
+                ";
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(query, con))
+                {
+                    adapter.SelectCommand.Parameters.AddWithValue("@Date", date.Date);
+                    adapter.SelectCommand.Parameters.AddWithValue("@Category", category);
+                    adapter.Fill(dt);
+                }
+                Console.WriteLine("Number of appointments fetched: " + dt.Rows.Count);
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("An error occurred while retrieving appointments.", ex);
+            }
+            return dt;
+        }
+
     }
 }
