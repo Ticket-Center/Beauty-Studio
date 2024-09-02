@@ -1,4 +1,5 @@
-﻿using BeautyStudio.SessionManagement;
+﻿using BeautyStudio.Services;
+using BeautyStudio.SessionManagement;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,11 +14,17 @@ namespace BeautyStudio.Views
 {
     public partial class BookTreatmentsPage : Form
     {
+        private ServiceTypeService _serviceTypeService;
         public BookTreatmentsPage()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(400, 150);
+            
+            dPickerDate.MinDate = DateTime.Now.Date;
+            dPickerDate.MaxDate = DateTime.Now.Date.AddDays(30);
+
+            _serviceTypeService = new ServiceTypeService();
 
             if (UserSession.Instance.isLoggedIn())
             {
@@ -43,16 +50,32 @@ namespace BeautyStudio.Views
         private void btnHair_Click(object sender, EventArgs e)
         {
             pBImage.Image = Properties.Resources.HairImage;
+            LoadServiceTypes("hair");
         }
 
         private void btnNails_Click(object sender, EventArgs e)
         {
             pBImage.Image = Properties.Resources.NailsImage;
+            LoadServiceTypes("nails");
         }
 
         private void btnFace_Click(object sender, EventArgs e)
         {
             pBImage.Image = Properties.Resources.FaceImage;
+            LoadServiceTypes("face");
+        }
+
+        private void LoadServiceTypes(string category)
+        {
+            try
+            {
+                DataTable serviceTypes = _serviceTypeService.GetServiceTypesByCategory(category);
+                cbService.DataSource = serviceTypes;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading service types: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
