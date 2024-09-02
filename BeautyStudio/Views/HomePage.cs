@@ -1,4 +1,5 @@
-﻿using BeautyStudio.SessionManagement;
+﻿using BeautyStudio.Services;
+using BeautyStudio.SessionManagement;
 using BeautyStudio.Views;
 using System;
 using System.Collections.Generic;
@@ -14,15 +15,36 @@ namespace BeautyStudio
 {
     public partial class HomePage : Form
     {
+        private AppointmentService _appointmentService;
         public HomePage()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(400, 150);
 
-            if(UserSession.Instance.isLoggedIn())
+            _appointmentService = new AppointmentService();
+
+            if (UserSession.Instance.isLoggedIn())
             {
                 lbUsername.Text = $"Hi, {UserSession.Instance.Username}";
+                LoadUserAppointments(UserSession.Instance.UserId);
+            }
+        }
+        private void LoadUserAppointments(int userId)
+        {
+            try
+            {
+                DataTable userAppointments = _appointmentService.GetUserAppointments(userId);
+                dataGridViewUserAppointments.DataSource = userAppointments;
+
+                if (dataGridViewUserAppointments.Columns["id"] != null)
+                {
+                    dataGridViewUserAppointments.Columns["id"].Visible = false;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error loading your appointments: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

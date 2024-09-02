@@ -69,8 +69,8 @@ namespace BeautyStudio.Views
             {
                 var selectedRow = dataGridViewAppointments.SelectedRows[0];
                 int appointmentId = Convert.ToInt32(selectedRow.Cells["id"].Value);
-                DateTime appointmentDate = Convert.ToDateTime(selectedRow.Cells["appointmentDate"].Value);
-                TimeSpan appointmentHour = TimeSpan.Parse(selectedRow.Cells["appointmentHour"].Value.ToString());
+                DateTime appointmentDate = Convert.ToDateTime(selectedRow.Cells["Date"].Value);
+                TimeSpan appointmentHour = TimeSpan.Parse(selectedRow.Cells["Hour"].Value.ToString());
 
                 DateTime appointmentDateTime = appointmentDate.Date + appointmentHour;
 
@@ -78,6 +78,12 @@ namespace BeautyStudio.Views
                 if (currentStatus != "active")
                 {
                     MessageBox.Show("Only appointments with 'active' status can be updated.", "Invalid Operation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if(currentStatus == status)
+                {
+                    MessageBox.Show("Already with "+status+ " status", "Invalid Operation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 

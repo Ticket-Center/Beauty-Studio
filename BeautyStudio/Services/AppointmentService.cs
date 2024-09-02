@@ -22,21 +22,27 @@ namespace BeautyStudio.Services
 
 
                 string query = @"
-                            SELECT 
-                                a.id,
-                                a.appointmentDate,
-                                a.appointmentHour,
-                                s.status AS [Status],
-                                e.first_name + ' ' + e.last_name AS [Employee],
-                                srv.service AS [ServiceType]
-                            FROM 
-                                [beauty-studio].[dbo].[Appointments] a
-                            INNER JOIN 
-                                [beauty-studio].[dbo].[Status] s ON a.status = s.id
-                            INNER JOIN 
-                                [beauty-studio].[dbo].[Employees] e ON a.employee = e.id
-                            INNER JOIN 
-                                [beauty-studio].[dbo].[ServiceTypes] srv ON a.serviceType = srv.id";
+                SELECT 
+                    u.username AS [Username],
+                    a.id,
+                    a.appointmentDate AS [Date],
+                    a.appointmentHour As [Hour],
+                    s.status AS [Status],
+                    e.first_name + ' ' + e.last_name AS [Employee],
+                    srv.service AS [ServiceType]
+                FROM 
+                    [beauty-studio].[dbo].[Appointments] a
+                INNER JOIN 
+                    [beauty-studio].[dbo].[Status] s ON a.status = s.id
+                INNER JOIN 
+                    [beauty-studio].[dbo].[Employees] e ON a.employee = e.id
+                INNER JOIN 
+                    [beauty-studio].[dbo].[ServiceTypes] srv ON a.serviceType = srv.id
+                INNER JOIN
+                    [beauty-studio].[dbo].[UserAppointments] ua ON a.id = ua.appointment_id
+                INNER JOIN
+                    [beauty-studio].[dbo].[Users] u ON ua.user_id = u.id";
+
 
 
                 using (SqlDataAdapter adapter=new SqlDataAdapter(query, con))
@@ -46,6 +52,48 @@ namespace BeautyStudio.Services
             }catch (Exception ex)
             {
                 throw new ApplicationException("An error occured while retrieving appointments.", ex);
+            }
+            return dt;
+        }
+
+        public DataTable GetUserAppointments(int userId)
+        {
+
+            DataTable dt=new DataTable();
+            try
+            {
+                Sql_Configuration sqlConfig = Sql_Configuration.getInstance();
+                SqlConnection con = sqlConfig.getConnection();
+
+                string query = @"
+                            SELECT 
+                                a.id,
+                                a.appointmentDate AS [Date],
+                                a.appointmentHour AS [Hour],
+                                s.status AS [Status],
+                                e.first_name + ' ' + e.last_name AS [Employee],
+                                srv.service AS [Service Type]
+                            FROM 
+                                [beauty-studio].[dbo].[Appointments] a
+                            INNER JOIN 
+                                [beauty-studio].[dbo].[Status] s ON a.status = s.id
+                            INNER JOIN 
+                                [beauty-studio].[dbo].[Employees] e ON a.employee = e.id
+                            INNER JOIN 
+                                [beauty-studio].[dbo].[ServiceTypes] srv ON a.serviceType = srv.id
+                            INNER JOIN
+                                [beauty-studio].[dbo].[UserAppointments] ua ON a.id = ua.appointment_id
+                            WHERE
+                                ua.user_id = @UserId";
+
+                using(SqlDataAdapter adapter= new SqlDataAdapter(query, con))
+                {
+                    adapter.SelectCommand.Parameters.AddWithValue("@UserId", userId);
+                    adapter.Fill(dt);
+                }
+            }catch(Exception ex) 
+            {
+                throw new ApplicationException("An error occurred while retrieving user appointments.", ex);
             }
             return dt;
         }
