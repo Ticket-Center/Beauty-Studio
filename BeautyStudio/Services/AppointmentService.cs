@@ -153,5 +153,55 @@ namespace BeautyStudio.Services
             return dt;
         }
 
+        public DataTable GetAppointmentsByDateAndUsername(DateTime date, string username)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                Sql_Configuration sqlConfig = Sql_Configuration.getInstance();
+                SqlConnection con = sqlConfig.getConnection();
+
+                // Define the query with filters for both date and username
+                string query = @"
+            SELECT 
+                u.username AS [Username],
+                a.id,
+                a.appointmentDate AS [Date],
+                a.appointmentHour AS [Hour],
+                s.status AS [Status],
+                e.first_name + ' ' + e.last_name AS [Employee],
+                srv.service AS [ServiceType]
+            FROM 
+                [beauty-studio].[dbo].[Appointments] a
+            INNER JOIN 
+                [beauty-studio].[dbo].[Status] s ON a.status = s.id
+            INNER JOIN 
+                [beauty-studio].[dbo].[Employees] e ON a.employee = e.id
+            INNER JOIN 
+                [beauty-studio].[dbo].[ServiceTypes] srv ON a.serviceType = srv.id
+            INNER JOIN
+                [beauty-studio].[dbo].[UserAppointments] ua ON a.id = ua.appointment_id
+            INNER JOIN
+                [beauty-studio].[dbo].[Users] u ON ua.user_id = u.id
+            WHERE 
+                CAST(a.appointmentDate AS DATE) = @Date
+                AND u.username = @Username
+        ";
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(query, con))
+                {
+                    adapter.SelectCommand.Parameters.AddWithValue("@Date", date.Date);
+                    adapter.SelectCommand.Parameters.AddWithValue("@Username", username);
+                    adapter.Fill(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("An error occurred while retrieving appointments by date and username.", ex);
+            }
+            return dt;
+        }
+
+
     }
 }

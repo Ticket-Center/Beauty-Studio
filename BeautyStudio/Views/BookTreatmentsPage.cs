@@ -120,7 +120,7 @@ namespace BeautyStudio.Views
 
                 var workingHours = Enumerable.Range(10, 8).Select(h => new { Hour = h }).ToList();
 
-            
+
                 var occupiedHours = new List<int>();
                 foreach (DataRow row in appointments.Rows)
                 {

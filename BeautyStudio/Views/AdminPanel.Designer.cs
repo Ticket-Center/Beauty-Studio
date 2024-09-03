@@ -43,6 +43,9 @@
             dataGridViewAppointments = new DataGridView();
             btnCancel = new Button();
             btnComplete = new Button();
+            txtBUsername = new TextBox();
+            dPickerDate = new DateTimePicker();
+            btnFilter = new Button();
             fLPanelMenu.SuspendLayout();
             panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -198,11 +201,43 @@
             btnComplete.UseVisualStyleBackColor = false;
             btnComplete.Click += btnComplete_Click;
             // 
+            // txtBUsername
+            // 
+            txtBUsername.Location = new Point(298, 45);
+            txtBUsername.Name = "txtBUsername";
+            txtBUsername.Size = new Size(268, 27);
+            txtBUsername.TabIndex = 4;
+            txtBUsername.Text = "Username";
+            txtBUsername.MouseClick += txtBUsername_MouseClick;
+            // 
+            // dPickerDate
+            // 
+            dPickerDate.Location = new Point(589, 45);
+            dPickerDate.Name = "dPickerDate";
+            dPickerDate.Size = new Size(218, 27);
+            dPickerDate.TabIndex = 5;
+            // 
+            // btnFilter
+            // 
+            btnFilter.BackColor = Color.Plum;
+            btnFilter.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnFilter.ForeColor = SystemColors.ControlLightLight;
+            btnFilter.Location = new Point(848, 30);
+            btnFilter.Name = "btnFilter";
+            btnFilter.Size = new Size(123, 54);
+            btnFilter.TabIndex = 6;
+            btnFilter.Text = "Filter";
+            btnFilter.UseVisualStyleBackColor = false;
+            btnFilter.Click += btnFilter_Click;
+            // 
             // AdminPanel
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1010, 603);
+            Controls.Add(btnFilter);
+            Controls.Add(dPickerDate);
+            Controls.Add(txtBUsername);
             Controls.Add(btnComplete);
             Controls.Add(btnCancel);
             Controls.Add(dataGridViewAppointments);
@@ -217,6 +252,7 @@
             panelLogOut.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewAppointments).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -235,5 +271,8 @@
         private DataGridView dataGridViewAppointments;
         private Button btnCancel;
         private Button btnComplete;
+        private TextBox txtBUsername;
+        private DateTimePicker dPickerDate;
+        private Button btnFilter;
     }
 }

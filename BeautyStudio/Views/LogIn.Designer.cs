@@ -43,7 +43,7 @@
             // 
             pBLogo.BackgroundImageLayout = ImageLayout.None;
             pBLogo.Image = (Image)resources.GetObject("pBLogo.Image");
-            pBLogo.Location = new Point(318, 31);
+            pBLogo.Location = new Point(347, 31);
             pBLogo.Name = "pBLogo";
             pBLogo.Size = new Size(334, 228);
             pBLogo.SizeMode = PictureBoxSizeMode.Zoom;
