@@ -51,6 +51,11 @@
             dPickerDate = new DateTimePicker();
             cbService = new ComboBox();
             cbHour = new ComboBox();
+            cbEmployee = new ComboBox();
+            lbDate = new Label();
+            lbService = new Label();
+            lbHour = new Label();
+            lbEmployee = new Label();
             fLPanelMenu.SuspendLayout();
             panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pBLogo).BeginInit();
@@ -246,9 +251,9 @@
             // 
             // pBImage
             // 
-            pBImage.Location = new Point(505, 245);
+            pBImage.Location = new Point(505, 274);
             pBImage.Name = "pBImage";
-            pBImage.Size = new Size(268, 253);
+            pBImage.Size = new Size(241, 224);
             pBImage.SizeMode = PictureBoxSizeMode.Zoom;
             pBImage.TabIndex = 4;
             pBImage.TabStop = false;
@@ -266,31 +271,86 @@
             btnBook.TabIndex = 5;
             btnBook.Text = "Book";
             btnBook.UseVisualStyleBackColor = false;
+            btnBook.Click += btnBook_Click;
             // 
             // dPickerDate
             // 
-            dPickerDate.Location = new Point(340, 134);
+            dPickerDate.Location = new Point(420, 127);
             dPickerDate.Name = "dPickerDate";
             dPickerDate.Size = new Size(157, 27);
             dPickerDate.TabIndex = 6;
+            dPickerDate.ValueChanged += dPickerDate_ValueChanged;
             // 
             // cbService
             // 
+            cbService.DropDownStyle = ComboBoxStyle.DropDownList;
             cbService.FormattingEnabled = true;
-            cbService.Location = new Point(553, 133);
+            cbService.Location = new Point(759, 127);
             cbService.Name = "cbService";
             cbService.Size = new Size(157, 28);
             cbService.TabIndex = 7;
-            cbService.Text = "Service";
             // 
             // cbHour
             // 
+            cbHour.DropDownStyle = ComboBoxStyle.DropDownList;
             cbHour.FormattingEnabled = true;
-            cbHour.Location = new Point(766, 133);
+            cbHour.Location = new Point(420, 195);
             cbHour.Name = "cbHour";
             cbHour.Size = new Size(157, 28);
             cbHour.TabIndex = 8;
-            cbHour.Text = "Hour";
+            // 
+            // cbEmployee
+            // 
+            cbEmployee.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbEmployee.FormattingEnabled = true;
+            cbEmployee.Location = new Point(759, 195);
+            cbEmployee.Name = "cbEmployee";
+            cbEmployee.Size = new Size(157, 28);
+            cbEmployee.TabIndex = 9;
+            // 
+            // lbDate
+            // 
+            lbDate.AutoSize = true;
+            lbDate.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbDate.ForeColor = Color.FromArgb(183, 130, 187);
+            lbDate.Location = new Point(347, 127);
+            lbDate.Name = "lbDate";
+            lbDate.Size = new Size(61, 28);
+            lbDate.TabIndex = 10;
+            lbDate.Text = "Date:";
+            // 
+            // lbService
+            // 
+            lbService.AutoSize = true;
+            lbService.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbService.ForeColor = Color.FromArgb(183, 130, 187);
+            lbService.Location = new Point(660, 127);
+            lbService.Name = "lbService";
+            lbService.Size = new Size(87, 28);
+            lbService.TabIndex = 11;
+            lbService.Text = "Service:";
+            // 
+            // lbHour
+            // 
+            lbHour.AutoSize = true;
+            lbHour.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbHour.ForeColor = Color.FromArgb(183, 130, 187);
+            lbHour.Location = new Point(347, 195);
+            lbHour.Name = "lbHour";
+            lbHour.Size = new Size(62, 28);
+            lbHour.TabIndex = 12;
+            lbHour.Text = "Hour:";
+            // 
+            // lbEmployee
+            // 
+            lbEmployee.AutoSize = true;
+            lbEmployee.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbEmployee.ForeColor = Color.FromArgb(183, 130, 187);
+            lbEmployee.Location = new Point(638, 195);
+            lbEmployee.Name = "lbEmployee";
+            lbEmployee.Size = new Size(109, 28);
+            lbEmployee.TabIndex = 13;
+            lbEmployee.Text = "Employee:";
             // 
             // BookTreatmentsPage
             // 
@@ -298,6 +358,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(1010, 603);
+            Controls.Add(lbEmployee);
+            Controls.Add(lbHour);
+            Controls.Add(lbService);
+            Controls.Add(lbDate);
+            Controls.Add(cbEmployee);
             Controls.Add(cbHour);
             Controls.Add(cbService);
             Controls.Add(dPickerDate);
@@ -318,6 +383,7 @@
             panelLogOut.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pBImage).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -344,5 +410,10 @@
         private DateTimePicker dPickerDate;
         private ComboBox cbService;
         private ComboBox cbHour;
+        private ComboBox cbEmployee;
+        private Label lbDate;
+        private Label lbService;
+        private Label lbHour;
+        private Label lbEmployee;
     }
 }
