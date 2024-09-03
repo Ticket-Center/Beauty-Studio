@@ -43,6 +43,8 @@
             panelLogo = new Panel();
             panelLogOut = new Panel();
             btnLogOut = new Button();
+            dataGridViewMessages = new DataGridView();
+            btnComplete = new Button();
             fLPanelMenu.SuspendLayout();
             panelGap3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pBLogo).BeginInit();
@@ -50,6 +52,7 @@
             panelAppointments.SuspendLayout();
             panelAdmin.SuspendLayout();
             panelLogOut.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewMessages).BeginInit();
             SuspendLayout();
             // 
             // fLPanelMenu
@@ -193,11 +196,36 @@
             btnLogOut.UseVisualStyleBackColor = true;
             btnLogOut.Click += btnLogOut_Click;
             // 
+            // dataGridViewMessages
+            // 
+            dataGridViewMessages.BackgroundColor = Color.Plum;
+            dataGridViewMessages.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewMessages.Location = new Point(298, 180);
+            dataGridViewMessages.Name = "dataGridViewMessages";
+            dataGridViewMessages.RowHeadersWidth = 51;
+            dataGridViewMessages.RowTemplate.Height = 29;
+            dataGridViewMessages.Size = new Size(673, 385);
+            dataGridViewMessages.TabIndex = 1;
+            // 
+            // btnComplete
+            // 
+            btnComplete.BackColor = Color.Plum;
+            btnComplete.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnComplete.ForeColor = SystemColors.ControlLightLight;
+            btnComplete.Location = new Point(298, 103);
+            btnComplete.Name = "btnComplete";
+            btnComplete.Size = new Size(123, 54);
+            btnComplete.TabIndex = 3;
+            btnComplete.Text = "Complete";
+            btnComplete.UseVisualStyleBackColor = false;
+            // 
             // AdminPanelMessages
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1010, 603);
+            Controls.Add(btnComplete);
+            Controls.Add(dataGridViewMessages);
             Controls.Add(fLPanelMenu);
             Name = "AdminPanelMessages";
             Text = "Beauty Studio";
@@ -208,6 +236,7 @@
             panelAppointments.ResumeLayout(false);
             panelAdmin.ResumeLayout(false);
             panelLogOut.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewMessages).EndInit();
             ResumeLayout(false);
         }
 
@@ -228,5 +257,7 @@
         private Button btnAppointments;
         private Label lbAdm;
         private Button btnLogOut;
+        private DataGridView dataGridViewMessages;
+        private Button btnComplete;
     }
 }

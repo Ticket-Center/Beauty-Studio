@@ -37,5 +37,42 @@ namespace BeautyStudio.Services
                 throw new ApplicationException("An error occurred while requesting appointment cancellation.", ex);
             }
         }
+
+        public DataTable GetMessages()
+        {
+            DataTable messagesTable = new DataTable();
+
+            try
+            {
+                Sql_Configuration sqlConfig = Sql_Configuration.getInstance();
+                using (SqlConnection con = sqlConfig.getConnection())
+                {
+                    string query = @"
+                    SELECT 
+                        m.id,
+                        m.message AS [Message for Cancelation], 
+                        s.status AS [Status]
+                    FROM
+                        [beauty-studio].[dbo].[Messages] m
+                    INNER JOIN
+                        [beauty-studio].[dbo].[Status] s ON m.status=s.id
+                    WHERE
+                        s.status = 'active'";
+
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, con))
+                    {
+                        adapter.Fill(messagesTable);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("An error occurred while retrieving messages.", ex);
+            }
+
+            return messagesTable;
+        }
+
     }
 }
