@@ -218,6 +218,7 @@
             btnComplete.TabIndex = 3;
             btnComplete.Text = "Complete";
             btnComplete.UseVisualStyleBackColor = false;
+            btnComplete.Click += btnComplete_Click;
             // 
             // AdminPanelMessages
             // 

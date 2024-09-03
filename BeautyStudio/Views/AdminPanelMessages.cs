@@ -36,6 +36,8 @@ namespace BeautyStudio.Views
                 {
                     dataGridViewMessages.Columns["id"].Visible = false;
                 }
+
+                dataGridViewMessages.Columns["Message for Cancelation"].Width = 450;
             }
             catch (Exception ex)
             {
@@ -56,6 +58,35 @@ namespace BeautyStudio.Views
             LogIn logInForm = new LogIn();
             this.Hide();
             logInForm.ShowDialog();
+        }
+
+        private void btnComplete_Click(object sender, EventArgs e)
+        {
+            UpdateMessageStatus("Completed");
+        }
+
+        private void UpdateMessageStatus(string status)
+        {
+            if (dataGridViewMessages.SelectedRows.Count > 0)
+            {
+                var selectedRow = dataGridViewMessages.SelectedRows[0];
+                int messageId = Convert.ToInt32(selectedRow.Cells["id"].Value);
+
+                try
+                {
+                    _messageManagementService.UpdateMessageStatus(messageId, status);
+                    MessageBox.Show($"Message {status} successfully.");
+                    LoadMessages();
+                }
+                catch (ApplicationException ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a message to update.");
+            }
         }
     }
 }

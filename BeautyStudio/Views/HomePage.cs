@@ -89,14 +89,13 @@ namespace BeautyStudio
 
                     string username = UserSession.Instance.Username;
 
-                    string formattedDate = appointmentDate.ToShortDateString();
+                    string formattedDate = appointmentDate.ToString("d.M.yyyy");
 
-                    string appointmentDetails = $"User " + username +
-                        $" request cancellation of appointment.\n" +
-                        $"Date: " + formattedDate +
-                        $"\nHour: " + appointmentHour +
-                        $"\nService Type: " + serviceType +
-                        $"\nBy Employee: " + employeeName;
+                    string appointmentDetails = $"{username}, "
+                                            + $"{formattedDate}, "
+                                            + $"{appointmentHour}, "
+                                            + $"{serviceType}, "
+                                            + $"{employeeName}";
 
                     bool result = _messageManagementService.RequestAppointmentCancellation(appointmentDetails);
                     if (result)
