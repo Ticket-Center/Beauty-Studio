@@ -42,6 +42,8 @@
             txtEmail = new TextBox();
             txtPassword = new TextBox();
             btnCancel = new Button();
+            lbRepeatPassword = new Label();
+            txtRepeatPassword = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pBLogo).BeginInit();
             SuspendLayout();
             // 
@@ -61,7 +63,7 @@
             btnRegister.BackColor = Color.Plum;
             btnRegister.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnRegister.ForeColor = SystemColors.ControlLightLight;
-            btnRegister.Location = new Point(828, 440);
+            btnRegister.Location = new Point(766, 467);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(123, 54);
             btnRegister.TabIndex = 12;
@@ -71,7 +73,7 @@
             // 
             // txtLastName
             // 
-            txtLastName.Location = new Point(313, 368);
+            txtLastName.Location = new Point(278, 368);
             txtLastName.Margin = new Padding(3, 4, 3, 4);
             txtLastName.Multiline = true;
             txtLastName.Name = "txtLastName";
@@ -83,26 +85,26 @@
             lbUsername.AutoSize = true;
             lbUsername.Font = new Font("Impact", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             lbUsername.ForeColor = SystemColors.ControlLightLight;
-            lbUsername.Location = new Point(72, 426);
+            lbUsername.Location = new Point(84, 426);
             lbUsername.Name = "lbUsername";
-            lbUsername.Size = new Size(203, 35);
+            lbUsername.Size = new Size(138, 35);
             lbUsername.TabIndex = 10;
-            lbUsername.Text = "Enter Username:";
+            lbUsername.Text = "Username:";
             // 
             // lbPassword
             // 
             lbPassword.AutoSize = true;
             lbPassword.Font = new Font("Impact", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             lbPassword.ForeColor = SystemColors.ControlLightLight;
-            lbPassword.Location = new Point(712, 309);
+            lbPassword.Location = new Point(556, 309);
             lbPassword.Name = "lbPassword";
-            lbPassword.Size = new Size(198, 35);
+            lbPassword.Size = new Size(133, 35);
             lbPassword.TabIndex = 9;
-            lbPassword.Text = "Enter Password:";
+            lbPassword.Text = "Password:";
             // 
             // txtFirstName
             // 
-            txtFirstName.Location = new Point(313, 309);
+            txtFirstName.Location = new Point(278, 309);
             txtFirstName.Margin = new Padding(3, 4, 3, 4);
             txtFirstName.Multiline = true;
             txtFirstName.Name = "txtFirstName";
@@ -114,37 +116,37 @@
             lbFirstName.AutoSize = true;
             lbFirstName.Font = new Font("Impact", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             lbFirstName.ForeColor = SystemColors.ControlLightLight;
-            lbFirstName.Location = new Point(72, 309);
+            lbFirstName.Location = new Point(84, 309);
             lbFirstName.Name = "lbFirstName";
-            lbFirstName.Size = new Size(206, 35);
+            lbFirstName.Size = new Size(141, 35);
             lbFirstName.TabIndex = 13;
-            lbFirstName.Text = "Enter First Name:";
+            lbFirstName.Text = "First Name:";
             // 
             // lbLastName
             // 
             lbLastName.AutoSize = true;
             lbLastName.Font = new Font("Impact", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             lbLastName.ForeColor = SystemColors.ControlLightLight;
-            lbLastName.Location = new Point(72, 368);
+            lbLastName.Location = new Point(84, 368);
             lbLastName.Name = "lbLastName";
-            lbLastName.Size = new Size(203, 35);
+            lbLastName.Size = new Size(138, 35);
             lbLastName.TabIndex = 14;
-            lbLastName.Text = "Enter Last Name:";
+            lbLastName.Text = "Last Name:";
             // 
             // lbEmail
             // 
             lbEmail.AutoSize = true;
             lbEmail.Font = new Font("Impact", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             lbEmail.ForeColor = SystemColors.ControlLightLight;
-            lbEmail.Location = new Point(72, 486);
+            lbEmail.Location = new Point(84, 486);
             lbEmail.Name = "lbEmail";
-            lbEmail.Size = new Size(148, 35);
+            lbEmail.Size = new Size(83, 35);
             lbEmail.TabIndex = 15;
-            lbEmail.Text = "Enter Email:";
+            lbEmail.Text = "Email:";
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(313, 426);
+            txtUsername.Location = new Point(278, 426);
             txtUsername.Margin = new Padding(3, 4, 3, 4);
             txtUsername.Multiline = true;
             txtUsername.Name = "txtUsername";
@@ -153,7 +155,7 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(313, 486);
+            txtEmail.Location = new Point(278, 486);
             txtEmail.Margin = new Padding(3, 4, 3, 4);
             txtEmail.Multiline = true;
             txtEmail.Name = "txtEmail";
@@ -162,7 +164,7 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(712, 368);
+            txtPassword.Location = new Point(724, 309);
             txtPassword.Margin = new Padding(3, 4, 3, 4);
             txtPassword.Multiline = true;
             txtPassword.Name = "txtPassword";
@@ -175,7 +177,7 @@
             btnCancel.BackColor = Color.Plum;
             btnCancel.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnCancel.ForeColor = SystemColors.ControlLightLight;
-            btnCancel.Location = new Point(662, 440);
+            btnCancel.Location = new Point(603, 467);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(123, 54);
             btnCancel.TabIndex = 19;
@@ -183,12 +185,34 @@
             btnCancel.UseVisualStyleBackColor = false;
             btnCancel.Click += btnCancel_Click;
             // 
+            // lbRepeatPassword
+            // 
+            lbRepeatPassword.Font = new Font("Impact", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            lbRepeatPassword.ForeColor = SystemColors.ControlLightLight;
+            lbRepeatPassword.Location = new Point(556, 368);
+            lbRepeatPassword.Name = "lbRepeatPassword";
+            lbRepeatPassword.Size = new Size(133, 79);
+            lbRepeatPassword.TabIndex = 20;
+            lbRepeatPassword.Text = "Repeat Password:";
+            // 
+            // txtRepeatPassword
+            // 
+            txtRepeatPassword.Location = new Point(724, 390);
+            txtRepeatPassword.Margin = new Padding(3, 4, 3, 4);
+            txtRepeatPassword.Multiline = true;
+            txtRepeatPassword.Name = "txtRepeatPassword";
+            txtRepeatPassword.PasswordChar = '*';
+            txtRepeatPassword.Size = new Size(215, 35);
+            txtRepeatPassword.TabIndex = 21;
+            // 
             // Register
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(183, 130, 187);
             ClientSize = new Size(1010, 603);
+            Controls.Add(txtRepeatPassword);
+            Controls.Add(lbRepeatPassword);
             Controls.Add(btnCancel);
             Controls.Add(txtPassword);
             Controls.Add(txtEmail);
@@ -224,5 +248,7 @@
         private TextBox txtEmail;
         private TextBox txtPassword;
         private Button btnCancel;
+        private Label lbRepeatPassword;
+        private TextBox txtRepeatPassword;
     }
 }
