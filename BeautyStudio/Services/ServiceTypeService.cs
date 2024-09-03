@@ -45,5 +45,48 @@ namespace BeautyStudio.Services
 
             return dt;
         }
+
+        public int GetServiceDurationById(int serviceTypeId)
+        {
+            int duration = 0;
+
+            try
+            {
+                Sql_Configuration sqlConfig = Sql_Configuration.getInstance();
+                SqlConnection con = sqlConfig.getConnection();
+
+                string query = @"
+            SELECT 
+                st.duration AS [Duration]
+            FROM 
+                [beauty-studio].[dbo].[ServiceTypes] st
+            WHERE 
+                st.id = @ServiceTypeId";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@ServiceTypeId", serviceTypeId);
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+
+                        if (dt.Rows.Count > 0)
+                        {
+                            duration = Convert.ToInt32(dt.Rows[0]["Duration"]);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("An error occurred while retrieving the service duration.", ex);
+            }
+
+            return duration;
+        }
+
+
     }
 }

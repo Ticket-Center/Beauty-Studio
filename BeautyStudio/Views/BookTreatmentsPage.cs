@@ -210,11 +210,39 @@ namespace BeautyStudio.Views
             int serviceTypeId = Convert.ToInt32(cbService.SelectedValue);
             int employeeId = Convert.ToInt32(cbEmployee.SelectedValue);
 
+            TimeSpan appointmentH = TimeSpan.Parse(appointmentHour);
+
             try
             {
+                //Duration of the selected service
+                int serviceDuration = _serviceTypeService.GetServiceDurationById(serviceTypeId);
+                TimeSpan serviceDurationTimeSpan=TimeSpan.FromMinutes(serviceDuration);
+
+                //The end time of the appointment
+                TimeSpan appointmentEndHour=appointmentH.Add(serviceDurationTimeSpan);
+
+                DataTable appointments = _appointmentService.GetAppointmentsForDateAndCategory(appointmentDate, selectedCategory);
+
+                foreach(DataRow row in appointments.Rows)
+                {
+                    TimeSpan existingStartHour = (TimeSpan)row["appointmentHour"];
+                    int existingDuration = Convert.ToInt32(row["duration"]);
+                    TimeSpan existingEndHour = existingStartHour.Add(TimeSpan.FromMinutes(existingDuration));
+
+
+                    // Check if the selected time overlaps with any existing appointment
+                    if (appointmentH < existingEndHour && appointmentEndHour > existingStartHour)
+                    {
+                        MessageBox.Show("The selected time slot overlaps with an existing appointment. Please choose another time.", "Time Slot Unavailable", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+
+
                 int userId = UserSession.Instance.UserId;
                 _appointmentManagementService.AddAppointment(appointmentDate, appointmentHour, "active", employeeId, serviceTypeId, userId);
                 MessageBox.Show("Appointment booked successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
                 BookTreatmentsPage bookTreatmentsForm = new BookTreatmentsPage();
                 this.Hide();
                 bookTreatmentsForm.ShowDialog();
