@@ -64,7 +64,7 @@ namespace BeautyStudio.Views
             pBImage.Image = Properties.Resources.HairImage;
             cbHour.Items.Clear();
             LoadServiceTypes(selectedCategory);
-            //LoadEmployees(selectedCategory);
+            LoadEmployees(selectedCategory);
         }
 
         private void btnNails_Click(object sender, EventArgs e)
@@ -73,7 +73,7 @@ namespace BeautyStudio.Views
             pBImage.Image = Properties.Resources.NailsImage;
             cbHour.Items.Clear();
             LoadServiceTypes(selectedCategory);
-            //LoadEmployees(selectedCategory);
+            LoadEmployees(selectedCategory);
         }
 
         private void btnFace_Click(object sender, EventArgs e)
@@ -82,7 +82,7 @@ namespace BeautyStudio.Views
             pBImage.Image = Properties.Resources.FaceImage;
             cbHour.Items.Clear();
             LoadServiceTypes(selectedCategory);
-            //LoadEmployees(selectedCategory);
+            LoadEmployees(selectedCategory);
         }
 
         private void LoadServiceTypes(string category)
@@ -120,6 +120,7 @@ namespace BeautyStudio.Views
 
                 var workingHours = Enumerable.Range(10, 8).Select(h => new { Hour = h }).ToList();
 
+            
                 var occupiedHours = new List<int>();
                 foreach (DataRow row in appointments.Rows)
                 {
@@ -138,7 +139,21 @@ namespace BeautyStudio.Views
                     }
                 }
 
-                var freeHours = workingHours.Where(h => !occupiedHours.Contains(h.Hour)).Select(h => h.Hour).ToList();
+                // Get current time
+                DateTime now = DateTime.Now;
+                TimeSpan twoHoursFromNow = TimeSpan.FromHours(2);
+                bool isToday = selectedDate.Date == now.Date;
+
+                //var freeHours = workingHours.Where(h => !occupiedHours.Contains(h.Hour)).Select(h => h.Hour).ToList();
+
+                // Filter working hours based on whether it's today
+                var freeHours = workingHours
+                    .Where(h =>
+                        (!isToday || (new TimeSpan(h.Hour, 0, 0) >= now.TimeOfDay.Add(twoHoursFromNow))) // If today, only include hours 2 hours from now or later
+                        && !occupiedHours.Contains(h.Hour)) // Exclude occupied hours
+                    .Select(h => h.Hour)
+                    .ToList();
+
 
                 cbHour.Items.Clear();
 
@@ -183,29 +198,36 @@ namespace BeautyStudio.Views
                 return;
             }
 
+            if (cbEmployee.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select an employee.", "Employee Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             DateTime appointmentDate = dPickerDate.Value.Date;
             string appointmentHour = cbHour.SelectedItem.ToString();
             int serviceTypeId = Convert.ToInt32(cbService.SelectedValue);
-            //int employeeId = Convert.ToInt32(cbEmployee.SelectedValue);
-            int employeeId = 1;
+            int employeeId = Convert.ToInt32(cbEmployee.SelectedValue);
 
             try
             {
                 int userId = UserSession.Instance.UserId;
                 _appointmentManagementService.AddAppointment(appointmentDate, appointmentHour, "active", employeeId, serviceTypeId, userId);
                 MessageBox.Show("Appointment booked successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                BookTreatmentsPage bookTreatmentsForm = new BookTreatmentsPage();
+                this.Hide();
+                bookTreatmentsForm.ShowDialog();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error booking appointment: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        /*private void LoadEmployees(string category)
+        private void LoadEmployees(string category)
         {
             try
             {
-                string employeeType = GetEmployeeTypeByCategory(category); // Implement this method to get employee type based on category
-                DataTable employees = _employeeService.GetEmployeesByType(employeeType);
+                DataTable employees = _employeeService.GetEmployeesByServiceCategory(category);
                 cbEmployee.DataSource = employees;
                 cbEmployee.DisplayMember = "full_name";
                 cbEmployee.ValueMember = "id";
@@ -229,7 +251,7 @@ namespace BeautyStudio.Views
                 default:
                     return null;
             }
-        }*/
+        }
 
 
     }

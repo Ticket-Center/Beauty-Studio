@@ -81,9 +81,9 @@ namespace BeautyStudio.Views
                     return;
                 }
 
-                if(currentStatus == status)
+                if (currentStatus == status)
                 {
-                    MessageBox.Show("Already with "+status+ " status", "Invalid Operation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Already with " + status + " status", "Invalid Operation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 

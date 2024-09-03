@@ -11,7 +11,7 @@ namespace BeautyStudio.Services
 {
     public class EmployeeService
     {
-        public DataTable GetEmployeesByType(string employeeType)
+        public DataTable GetEmployeesByServiceCategory(string category)
         {
             DataTable employeeTable = new DataTable();
             try
@@ -23,11 +23,12 @@ namespace BeautyStudio.Services
                         SELECT e.id, CONCAT(e.first_name, ' ', e.last_name) AS full_name
                         FROM [beauty-studio].[dbo].[Employees] e
                         JOIN [beauty-studio].[dbo].[EmployeeTypes] et ON e.type = et.id
-                        WHERE et.type = @EmployeeType";
+                        JOIN [beauty-studio].[dbo].[ServiceCategories] sc ON et.id = sc.id
+                        WHERE sc.category = @Category";
 
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
-                        cmd.Parameters.AddWithValue("@EmployeeType", employeeType);
+                        cmd.Parameters.AddWithValue("@Category", category);
                         using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                         {
                             adapter.Fill(employeeTable);

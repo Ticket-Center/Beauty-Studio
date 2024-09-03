@@ -107,20 +107,37 @@ namespace BeautyStudio.Services
                 Sql_Configuration sqlConfig = Sql_Configuration.getInstance();
                 SqlConnection con = sqlConfig.getConnection();
 
+                /* string query = @"
+                 SELECT
+                     a.appointmentHour,
+                     st.duration
+                 FROM
+                     [beauty-studio].[dbo].[Appointments] a
+                 INNER JOIN
+                     [beauty-studio].[dbo].[ServiceTypes] st ON a.serviceType = st.id
+                 INNER JOIN
+                     [beauty-studio].[dbo].[ServiceCategories] sc ON st.category = sc.id
+                 WHERE
+                     CAST(a.appointmentDate AS DATE) = @Date
+                     AND sc.category = @Category
+                 ";*/
+
                 string query = @"
-                SELECT
-                    a.appointmentHour,
-                    st.duration
-                FROM
-                    [beauty-studio].[dbo].[Appointments] a
-                INNER JOIN
-                    [beauty-studio].[dbo].[ServiceTypes] st ON a.serviceType = st.id
-                INNER JOIN
-                    [beauty-studio].[dbo].[ServiceCategories] sc ON st.category = sc.id
-                WHERE
-                    CAST(a.appointmentDate AS DATE) = @Date
-                    AND sc.category = @Category
-                ";
+                    SELECT
+                        a.appointmentHour,
+                        st.duration
+                    FROM
+                        [beauty-studio].[dbo].[Appointments] a
+                    INNER JOIN
+                        [beauty-studio].[dbo].[ServiceTypes] st ON a.serviceType = st.id
+                    INNER JOIN
+                        [beauty-studio].[dbo].[ServiceCategories] sc ON st.category = sc.id
+                    INNER JOIN
+                        [beauty-studio].[dbo].[Status] s ON a.status = s.id
+                    WHERE
+                        CAST(a.appointmentDate AS DATE) = @Date
+                        AND sc.category = @Category
+                        AND s.status = 'active'";
 
                 using (SqlDataAdapter adapter = new SqlDataAdapter(query, con))
                 {

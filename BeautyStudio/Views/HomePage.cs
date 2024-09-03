@@ -35,7 +35,15 @@ namespace BeautyStudio
             try
             {
                 DataTable userAppointments = _appointmentService.GetUserAppointments(userId);
-                dataGridViewUserAppointments.DataSource = userAppointments;
+
+                // Filter the appointments to show only those with 'active' status
+                DataView activeAppointmentsView = new DataView(userAppointments)
+                {
+                    RowFilter = "Status = 'active'"
+                };
+
+                dataGridViewUserAppointments.DataSource = activeAppointmentsView;
+
 
                 if (dataGridViewUserAppointments.Columns["id"] != null)
                 {
