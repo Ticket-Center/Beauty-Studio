@@ -156,5 +156,12 @@ namespace BeautyStudio.Views
         {
             txtBUsername.Text = string.Empty;
         }
+
+        private void btnMessages_Click(object sender, EventArgs e)
+        {
+            AdminPanelMessages adminPanelMessagesForm = new AdminPanelMessages();
+            this.Hide();
+            adminPanelMessagesForm.ShowDialog();
+        }
     }
 }
