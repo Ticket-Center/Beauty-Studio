@@ -39,6 +39,7 @@
             btnAppointments = new Button();
             panelGap2 = new Panel();
             panelLogOut = new Panel();
+            btnMessages = new Button();
             panelGap3 = new Panel();
             panel1 = new Panel();
             btnLogOut = new Button();
@@ -48,7 +49,8 @@
             txtBUsername = new TextBox();
             dPickerDate = new DateTimePicker();
             btnFilter = new Button();
-            btnMessages = new Button();
+            cBUsername = new CheckBox();
+            cBDate = new CheckBox();
             fLPanelMenu.SuspendLayout();
             panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pBLogo).BeginInit();
@@ -140,6 +142,7 @@
             btnAppointments.TabIndex = 7;
             btnAppointments.Text = "Appointments";
             btnAppointments.UseVisualStyleBackColor = true;
+            btnAppointments.Click += btnAppointments_Click;
             // 
             // panelGap2
             // 
@@ -155,6 +158,20 @@
             panelLogOut.Name = "panelLogOut";
             panelLogOut.Size = new Size(247, 50);
             panelLogOut.TabIndex = 1;
+            // 
+            // btnMessages
+            // 
+            btnMessages.FlatAppearance.BorderColor = Color.FromArgb(183, 130, 187);
+            btnMessages.FlatStyle = FlatStyle.Flat;
+            btnMessages.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMessages.ForeColor = SystemColors.ControlLightLight;
+            btnMessages.Location = new Point(0, 0);
+            btnMessages.Name = "btnMessages";
+            btnMessages.Size = new Size(247, 50);
+            btnMessages.TabIndex = 2;
+            btnMessages.Text = "Messages";
+            btnMessages.UseVisualStyleBackColor = true;
+            btnMessages.Click += btnMessages_Click;
             // 
             // panelGap3
             // 
@@ -251,25 +268,31 @@
             btnFilter.UseVisualStyleBackColor = false;
             btnFilter.Click += btnFilter_Click;
             // 
-            // btnMessages
+            // cBUsername
             // 
-            btnMessages.FlatAppearance.BorderColor = Color.FromArgb(183, 130, 187);
-            btnMessages.FlatStyle = FlatStyle.Flat;
-            btnMessages.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            btnMessages.ForeColor = SystemColors.ControlLightLight;
-            btnMessages.Location = new Point(0, 0);
-            btnMessages.Name = "btnMessages";
-            btnMessages.Size = new Size(247, 50);
-            btnMessages.TabIndex = 2;
-            btnMessages.Text = "Messages";
-            btnMessages.UseVisualStyleBackColor = true;
-            btnMessages.Click += btnMessages_Click;
+            cBUsername.AutoSize = true;
+            cBUsername.Location = new Point(423, 22);
+            cBUsername.Name = "cBUsername";
+            cBUsername.Size = new Size(18, 17);
+            cBUsername.TabIndex = 7;
+            cBUsername.UseVisualStyleBackColor = true;
+            // 
+            // cBDate
+            // 
+            cBDate.AutoSize = true;
+            cBDate.Location = new Point(689, 22);
+            cBDate.Name = "cBDate";
+            cBDate.Size = new Size(18, 17);
+            cBDate.TabIndex = 8;
+            cBDate.UseVisualStyleBackColor = true;
             // 
             // AdminPanel
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1010, 603);
+            Controls.Add(cBDate);
+            Controls.Add(cBUsername);
             Controls.Add(btnFilter);
             Controls.Add(dPickerDate);
             Controls.Add(txtBUsername);
@@ -314,5 +337,7 @@
         private Panel panelGap3;
         private Panel panel1;
         private Button btnMessages;
+        private CheckBox cBUsername;
+        private CheckBox cBDate;
     }
 }
