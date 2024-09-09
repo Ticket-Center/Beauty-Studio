@@ -1,4 +1,5 @@
-﻿using BeautyStudio.Services;
+﻿using BeautyStudio.Enums;
+using BeautyStudio.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,31 +38,44 @@ namespace BeautyStudio
             string lastName = txtLastName.Text.Trim();
             string email = txtEmail.Text.Trim();
             string password = txtPassword.Text.Trim();
+            string repeatPassword = txtRepeatPassword.Text.Trim();
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(repeatPassword))
             {
                 MessageBox.Show("Please fill in all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            if (!password.Equals(repeatPassword))
+            {
+                MessageBox.Show("Passwords don't match", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
-                bool isRegistered = _registrationService.RegisterUser(username, firstName, lastName, email, password);
+                var result = _registrationService.RegisterUser(username, firstName, lastName, email, password);
 
-                if(isRegistered)
+                switch (result)
                 {
-                    MessageBox.Show("Registration successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LogIn logInForm = new LogIn();
-                    this.Hide();
-                    logInForm.ShowDialog();
+                    case RegistrationResult.Success:
+                        MessageBox.Show("Registration successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LogIn logInForm = new LogIn();
+                        this.Hide();
+                        logInForm.ShowDialog();
+                        break;
+
+                    case RegistrationResult.UsernameTaken:
+                        MessageBox.Show("Username already exists. Please choose a different one.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+
+                    case RegistrationResult.Failure:
+                        MessageBox.Show("Registration failed. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
                 }
-                else
-                {
-                    MessageBox.Show("Registration failed. Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("An error occured: "+ex.Message,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occured: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

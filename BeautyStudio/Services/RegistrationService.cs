@@ -1,4 +1,5 @@
 ﻿using BeautyStudio.DatabaseConfiguration;
+using BeautyStudio.Enums;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -10,8 +11,13 @@ namespace BeautyStudio.Services
 {
     public class RegistrationService
     {
-        public bool RegisterUser(string username,string firstName,string lastName, string email,string password)
+        public RegistrationResult RegisterUser(string username,string firstName,string lastName, string email,string password)
         {
+            if (IsUsernameTaken(username))
+            {
+                return RegistrationResult.UsernameTaken;
+            }
+
             try
             {
                 Sql_Configuration sqlConfig = Sql_Configuration.getInstance();
@@ -31,11 +37,36 @@ namespace BeautyStudio.Services
 
                     int rowsAffected = cmd.ExecuteNonQuery();
 
-                    return rowsAffected > 0;
-                }
-            }catch (Exception ex)
+                    return rowsAffected > 0 ? RegistrationResult.Success : RegistrationResult.Failure;
+                }  
+            }
+            catch (Exception ex)
             {
                 throw new ApplicationException("An error occured during registration.", ex);
+            }
+        }
+
+        private bool IsUsernameTaken(string username)
+        {
+            try
+            {
+
+                Sql_Configuration sqlConfig = Sql_Configuration.getInstance();
+                SqlConnection con = sqlConfig.getConnection();
+
+                string query = "SELECT COUNT(*) FROM Users WHERE Username = @Username";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@Username", username);
+                    int count = (int)cmd.ExecuteScalar();
+                    return count > 0; //return true if exists
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("An error occurred while checking the username.", ex);
             }
         }
     }
