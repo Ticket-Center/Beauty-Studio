@@ -44,6 +44,7 @@
             btnCancel = new Button();
             lbRepeatPassword = new Label();
             txtRepeatPassword = new TextBox();
+            cBConditions = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)pBLogo).BeginInit();
             SuspendLayout();
             // 
@@ -63,13 +64,13 @@
             btnRegister.BackColor = Color.Plum;
             btnRegister.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnRegister.ForeColor = SystemColors.ControlLightLight;
-            btnRegister.Location = new Point(766, 467);
+            btnRegister.Location = new Point(760, 499);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(123, 54);
             btnRegister.TabIndex = 12;
             btnRegister.Text = "Register";
             btnRegister.UseVisualStyleBackColor = false;
-            btnRegister.Click += btnRegister_Click;
+            btnRegister.Click += btnRegister_Click_1;
             // 
             // txtLastName
             // 
@@ -177,7 +178,7 @@
             btnCancel.BackColor = Color.Plum;
             btnCancel.Font = new Font("Impact", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnCancel.ForeColor = SystemColors.ControlLightLight;
-            btnCancel.Location = new Point(603, 467);
+            btnCancel.Location = new Point(603, 499);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(123, 54);
             btnCancel.TabIndex = 19;
@@ -205,12 +206,23 @@
             txtRepeatPassword.Size = new Size(215, 35);
             txtRepeatPassword.TabIndex = 21;
             // 
+            // cBConditions
+            // 
+            cBConditions.AutoSize = true;
+            cBConditions.Location = new Point(593, 458);
+            cBConditions.Name = "cBConditions";
+            cBConditions.Size = new Size(290, 24);
+            cBConditions.TabIndex = 22;
+            cBConditions.Text = "Yes, I agree with the terms and policies.";
+            cBConditions.UseVisualStyleBackColor = true;
+            // 
             // Register
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(183, 130, 187);
             ClientSize = new Size(1010, 603);
+            Controls.Add(cBConditions);
             Controls.Add(txtRepeatPassword);
             Controls.Add(lbRepeatPassword);
             Controls.Add(btnCancel);
@@ -250,5 +262,6 @@
         private Button btnCancel;
         private Label lbRepeatPassword;
         private TextBox txtRepeatPassword;
+        private CheckBox cBConditions;
     }
 }
