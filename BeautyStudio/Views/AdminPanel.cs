@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace BeautyStudio.Views
 {
@@ -115,35 +116,61 @@ namespace BeautyStudio.Views
             string username = txtBUsername.Text;
             DateTime selectedDate = dPickerDate.Value.Date;
 
-            bool usernameProvided = !string.IsNullOrEmpty(username);
-            bool dateProvided = selectedDate != default(DateTime);
-
-            if (!usernameProvided && !dateProvided)
-            {
-                MessageBox.Show("Please enter a username and select a date.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (!usernameProvided)
-            {
-                MessageBox.Show("Please enter a username.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (!dateProvided)
-            {
-                MessageBox.Show("Please select a date.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            bool isUsernameChecked = cBUsername.Checked;
+            bool isDateChecked = cBDate.Checked;
 
             try
             {
-                DataTable appointments = _appointmentService.GetAppointmentsByDateAndUsername(selectedDate, username);
-                dataGridViewAppointments.DataSource = appointments;
+                DataTable appointments = null;
 
-                // Optionally, handle the case where no appointments are found
-                if (appointments.Rows.Count == 0)
+                if (isUsernameChecked && isDateChecked)
                 {
-                    MessageBox.Show("No appointments found for the given date and username.", "No Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Both Username and Date are checked - call the SQL query to filter by both
+                    if (!string.IsNullOrEmpty(username))
+                    {
+                        appointments = _appointmentService.GetAppointmentsByDateAndUsername(selectedDate, username);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter a username.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+                else if (isUsernameChecked)
+                {
+                    // Only Username is checked - call the SQL query to filter by username
+                    if (!string.IsNullOrEmpty(username))
+                    {
+                        appointments = _appointmentService.GetAppointmentsByUsername(username);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter a username.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+                else if (isDateChecked)
+                {
+                    // Only Date is checked - call the SQL query to filter by date
+                    appointments = _appointmentService.GetAppointmentsByDate(selectedDate);
+                }
+                else
+                {
+                    // No checkbox is checked - show a message or load all appointments
+                    MessageBox.Show("Please check at least one filter option.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Assign the filtered appointments to the DataGridView
+                if (appointments != null)
+                {
+                    dataGridViewAppointments.DataSource = appointments;
+
+                    // Optionally, handle the case where no appointments are found
+                    if (appointments.Rows.Count == 0)
+                    {
+                        MessageBox.Show("No appointments found for the given filters.", "No Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
             catch (Exception ex)
@@ -162,6 +189,13 @@ namespace BeautyStudio.Views
             AdminPanelMessages adminPanelMessagesForm = new AdminPanelMessages();
             this.Hide();
             adminPanelMessagesForm.ShowDialog();
+        }
+
+        private void btnAppointments_Click(object sender, EventArgs e)
+        {
+            AdminPanel adminPanelForm = new AdminPanel();
+            this.Hide();
+            adminPanelForm.ShowDialog();
         }
     }
 }
