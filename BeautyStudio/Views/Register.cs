@@ -30,8 +30,7 @@ namespace BeautyStudio
             this.Hide();
             logInForm.ShowDialog();
         }
-
-        private void btnRegister_Click(object sender, EventArgs e)
+        private void btnRegister_Click_1(object sender, EventArgs e)
         {
             string username = txtUsername.Text.Trim();
             string firstName = txtFirstName.Text.Trim();
@@ -51,9 +50,14 @@ namespace BeautyStudio
                 MessageBox.Show("Passwords don't match", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (!cBConditions.Checked)
+            {
+                MessageBox.Show("Please agree to the terms and policies", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
-                var result = _registrationService.RegisterUser(username, firstName, lastName, email, password);
+                RegistrationResult result = _registrationService.RegisterUser(username, firstName, lastName, email, password);
 
                 switch (result)
                 {
